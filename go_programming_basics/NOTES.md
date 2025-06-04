@@ -1,0 +1,94 @@
+## Import
+
+- Tree Shaking and it's application
+    - Tree shaking
+    - Static Analysis
+    - Dead Code Elimination
+
+- Example in Popular Frameworks
+    - React
+    - Angular
+
+- Benefits of Tree Shaking
+    - Reduced Bundle size
+    - Improved Performance
+    - Efficient Dependency Management
+
+
+### Named import
+
+If you want to name your import to something, write the name just before the double quotes of that import.
+
+```go
+import (
+    foo "net/http"
+)
+```
+
+- Notes: Go compiler and linker are smart enough to import only the required parts, i.e. only the parts that we have used in our program from those imported packages into the final executable and how that happens is through *Tree Shaking*.
+
+- **Tree Shaking** : Technique used to eliminate the dead or unused code from the final executable or the final bundle, thereby reducing it's size and improving performance of the final bundle or executable.
+
+
+- During the build process, tree shaking statically analyzes the code base to determine which modules and functions are directly imported and used. Unused modules and functions identified during static analysis are labelled as `dead code`. Tree Shaking then removes these unused segments from the final output optimizing the bundle or executable size.
+
+- eg: React coupled with tools like Webpack and Roll-up employs tree shaking to remove unused components and utility functions from the Javascript bundle. And this optimization is crucial for large scale react applications.
+
+- Tree shaking minimizes the size of executables binaries or the final bundles which is critical for optimizing load times and improving runtime performance of our executable files. Smaller executables lead to faster load times and enhanced runtime efficiency benefitting both developers and end-users. 
+
+- Developers can import the entire library without worry about overhead of unused code because tree-shaking trims the unnecessary parts during the build process.
+
+- The import statement in go plays a pivotal in integrating external functionalities while ensuring that only the necessary parts contribute to the executable.
+
+<br/>
+<br/>
+
+## Data Types
+
+- Integers
+- Floating Point Numbers
+- Complex Numbers
+- Booleans
+- Strings
+- Constants
+- Arrays
+- Structs
+- Pointers
+- Maps
+- Slices
+- Functions
+- Channels
+- JSON
+- Text and HTML Templates
+<br/>
+
+- Variables declared without an explicit initialization are assigned a default zero value based on their type.
+    - Numeric types are given a value of zero
+    - boolean types are defaulted to False
+    - String type is an empty string by default
+    - pointers, slices, maps, functions and structs are initialized with `nil` value.
+
+
+## Variables
+
+- the `type` of the is optional if we are initializing the variable otherwise we have to declare the variable with a particular type.
+
+- we can use the gofer symbol (`:=`) to initialize the variable.
+    ```go
+    count := 10
+    lastName := "Smith"
+    ```
+
+- This is called type inference in go, allowing the variables to be initalized without explicitly specifying the type. The type is inferred from the assigned value.
+
+- Variables in go have `block scope` meaning that they are accessible only within the block they are declared.
+
+- It's kind of a rule in Go that : `gofer` notation can only be used within functions to declare and initialize variables locally. It is intented for local variables initialization within functions only.
+
+- If we are making a package level variable (global variable) then we cannot use the gopher notation.
+
+- global variable is only limited to the package scope. Outside the package we cannot use that variable.
+
+- variables live within their scope.
+
+- Variables in go provide a flexible and powerful way to manage data within programs.
