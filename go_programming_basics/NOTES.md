@@ -144,3 +144,34 @@ import (
 - Similarly, Underflow occurs when the result of a compilation is smaller than the minimum value that can be stored in a given numeric data type. This is more relevant for floating point numbers, where underflow can lead to loss of precision or significant digits in calculations involving very small values.
 
 - This needs to be taken care of when we are working on applications that are involved in scientific calculations, and where calculated values are big numbers.
+
+<br/>
+
+## For Loop
+
+- For loop is a fundamental control structure that allows you to repeatedly execute a block of code based on a condition.
+
+- Syntax
+    ```go
+    for initialization; conditon; post {
+        // Codeblock to be executed repeatedly
+    }
+    ```
+
+- Initialization: Executed before the first iteration. Typically used to initalize loop variables.
+
+- Conditon: Evaluate before each iteration. If false the loop terminates
+
+- Post: Executed after each iteration. Usally increments or updates loop variables.
+
+    ```go
+    for i=1; i<=5; i++ {
+        // Code block to be executed repeatedly
+    }
+    ```
+- Break: Terminates the loop immediately, transferring control to the next statement after the loop.
+
+- Continue: Skips the current iteration and moves to the next iteration of the loop.
+
+-   `%v` -> general value
+    `%d` -> specific integers
