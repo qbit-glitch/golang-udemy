@@ -205,3 +205,83 @@ import (
 ## Conditions: if else
 
 - If else condition are essential for controlling the flow of execution based on different conditions. They allow you to create decision making logic within your programs, enabling you to execute specific block of code based on whether certain conditions evaluate to true or false.
+
+## Conditons: switch
+
+- The switch statement provides a concise way to evaluate multiple possible conditions against a single expression. It simplifies the syntax compared to using multiple if and else if statements, making the code more readable and maintainable when dealing with multiple branching conditions.
+
+- Syntax : Switch case in case (switch case default) (fallthrough) : no break statements are needed in switch cases.
+    ```go
+    switch expression {
+        case value1:
+            // Code to be exceuted if expression equals value1
+            fallthrough  -> goes to the next case after evaluating this case.
+        case value2:
+            // Code to be exceuted if expression equals value2
+        case value3, value4, value5:
+            // Code to be exceuted if expression equals value3
+            // mutliple conditions
+        default:
+            // Code to be exceuted if expression does not match any values
+    }
+    ```
+
+- In Go, switch case can also be used with type assertions to switch on the type of an interface value.
+
+- `x interface{}` means x can be of any data-type.
+- As per Go compiler, we cannot use `fallthrough` when we are using a `type` switch.
+
+<br/>
+
+## Arrays
+
+- Arrays are fundamental data structures that allow you to store multiple values under a single variable. Understanding array is crucial as they provide a way to manage and manipulate ordered data efficiently.
+
+- Syntax : 
+    ```go
+    var arrayName [size][elementType]
+    ```
+- size is the number of elements that the array can hold. It's a fixed size, it's not variable. That's why we have to declare it beforehand.
+
+- elementType is the type of elements that the array can store.
+
+- In Go, arrays are value types means when you assign an array to a new variable or pass an array as an a rgument to a function, a copy of the original array is created and modifications to the copy do not affect the original array. So if we modify the copied array, it does not affect the original array.
+
+- We can iterate through an array using a `range` based iteration. `range` is a keyword in go, and any collection that we have, we can iterate over that using the `range` keyword.
+
+- If we want to discard the index, we can use `_` (underscore). Underscore means that we are discarding that value. Underscore in Go is known as `blank identifer`.
+
+    ```go
+    numbers := [5]int{10,11,12,13,14}
+    for _ , value := range numbers {
+        fmt.Printf("Value : %d\n",value)
+    }
+    ```
+
+- Underscore is a `Blank Identifier`, used to store unused values. Underscore in Go has several important uses. 
+    - Just as we saw above, if we don't want to use any value that is being returned from anywhere be it a range or a function that returns a value, but we don't want to use one value from multiple values being returned by the function. So in that case we can assign underscore to that value so that we will not have to use that and we will not get anerror that even if we let's say store in `i` but not used `i` later.
+
+    - We can also do underscore to avoid compiler errors of a variable not being used for temporary testings.
+        ```go
+        b := 2
+        _ = b
+        ```
+
+- We can determine the length of an array using the `len()` function with the arrayName as an argument .
+    `len(arrayName)`
+
+- Go supports multi-dimensional arrays which are array of arrays. They are useful for representing matrices and other structured data.
+
+- If we were to use the original array in copied array, we would have to use pointers and addresses.
+
+    ```go
+    originalArray := [3]int{1,2,3}
+    var copiedArray *[3]int
+    
+    copiedArray = &orginalArray
+    ```
+
+- So copiedArray carries the address where an array of three integers exists and if we have not initialized the array, it contains three zero values.  `var copiedArray *[3]int`
+
+- Assign the copied array the address where the original array is by using the ampersand sign (`&`) with the originalArray.
+
