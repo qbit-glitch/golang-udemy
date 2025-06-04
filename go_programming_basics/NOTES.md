@@ -92,3 +92,17 @@ import (
 - variables live within their scope.
 
 - Variables in go provide a flexible and powerful way to manage data within programs.
+
+
+## Constants
+
+- Constants must be initialized with values that can be determined at compile time. This typically includes literals and expressions that can be evaluated without runtime computations.
+
+- Go supports both `typed` and `untyped` constants.
+- Untyped constants are constants without a specified type until they are assigned to a value. They can be used in contexts that require a specific type, and go will automatically infer the approproate type.
+
+- NOTE: There is no short declaration for constants.
+
+- `const block` : We can group related constants together using this const block to make our life easier.
+
+- constants in go provide a mechanism for defining immutable values that remain consistent throughout the execution of the program.
