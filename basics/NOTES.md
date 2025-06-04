@@ -175,3 +175,33 @@ import (
 
 -   `%v` -> general value
     `%d` -> specific integers
+
+
+<br/>
+
+## Operators
+
+- Logical Operators
+    - ! : logical NOT
+    - || : logical OR
+    - && : logical AND
+
+- Bitwise Operator
+    - & : bitwise AND
+    - | : bitwise OR
+    - ^ : bitwise XOR
+    - &^ : bitwise AND NOT
+    - << : left shift
+    - >> : right shift
+
+- Comparison Operators:
+    - == : equal
+    - != : not equal
+    - <  : less than
+    - <= : less than or equal to
+    - >  : greater than
+    - >= : greater than or equal to
+
+## Conditions: if else
+
+- If else condition are essential for controlling the flow of execution based on different conditions. They allow you to create decision making logic within your programs, enabling you to execute specific block of code based on whether certain conditions evaluate to true or false.
