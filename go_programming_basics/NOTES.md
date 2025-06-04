@@ -106,3 +106,41 @@ import (
 - `const block` : We can group related constants together using this const block to make our life easier.
 
 - constants in go provide a mechanism for defining immutable values that remain consistent throughout the execution of the program.
+
+
+<br />
+
+## Arithmetic Operators
+
+- Basic Arithmetic Operators
+    - Addition +
+    - Subtraction -
+    - Multiplication *
+    - Division /
+    - Remainder (Modulus) %
+
+- Operator Precedence
+    1. Parentheses ()
+    2. Multiplication *, Division /, Remainder %
+    3. Addition +, Subtraction -
+
+- Overflow
+- Underflow
+
+- Why be mindful of overflow and underflow ?
+    - Program Stability
+    - Data Integrity
+    - Type Safety
+
+- Mitigation Strategies
+    - Range Checking
+    - Type Conversion
+    - Error Handling
+
+- Be mindful of potential overflow and underflow issues, especially when dealing with large numbers.
+
+- Overflow occurs when the result of a computation exceeds the maximum value that can be stored in a given numeric data-type. Overflow results in the value wrapping around to the minimum value for signed integers or causing unexpected behaviour for unsigned integers. eg: if you add two large integers and the result exceeds the maximum value represented by that integer type, overflow occurs.
+
+- Similarly, Underflow occurs when the result of a compilation is smaller than the minimum value that can be stored in a given numeric data type. This is more relevant for floating point numbers, where underflow can lead to loss of precision or significant digits in calculations involving very small values.
+
+- This needs to be taken care of when we are working on applications that are involved in scientific calculations, and where calculated values are big numbers.
