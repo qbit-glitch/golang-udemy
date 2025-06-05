@@ -509,4 +509,36 @@ import (
         // that it have to return these variables.
     }
     ```
-    
+
+
+<br/>
+
+## Variadic Functions
+
+- Variadic functions in Go allow you to create functions that can accept a variable number of arguments. This flexibility is particularly useful when you want to design functions that can handle a varying number of inputs without specifying them individually.
+
+- In Go, variadic functions are defined by prefixing the type of the last parameter with an ellipsis (`...`).
+
+- Syntax: 
+    ```go
+    // ... Ellipsis
+    func functionName(param1 type1, param2 type2, param3 ...type3) returnType {
+        // function body
+    }
+    ```
+
+    param3 with ellipsis type is called a variadic parameter.
+
+- variadic parameter is a list, so when we are iterating over a list it will have an index and a value.
+
+- Variadic function is something that you will be using a lot in real-world scenario.
+
+- Variadic parameter must be the last parameter in the function signature. They cannot come before any other parameter. Regular parameters will be taking precedence over variadic parameters while declaring them in the parameter list.
+
+- To unpack a slice we use ellipsis(...) operator which destructures the slice into individual elements.
+    ```go
+    numbers := []int{1,2,3,4,5,9}
+    total := sum(numbers...)    // passes sum(1,2,3,4,5,9) to the function sum
+    ```
+
+- In conclusion, variadic functions provide a flexible way to define functions that can accept a variable number of arguments of a specific type. They are particularly useful when dealing with functions that need to handle different numbers of inputs dynamically.
