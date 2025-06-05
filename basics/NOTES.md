@@ -486,3 +486,27 @@ import (
 - And you can also store the entity in data-structures like arrays, lists or maps. 
 
 - We can use functions in any capacity that we want.
+
+<br/>
+
+## Multiple Return Values
+
+- In Go, functions can declare multiple return values by listing them in parentheses after the parameter.
+
+- The biggest benefit of having mutlitple return values is error handling because one of the values can be an error. Useful in bigger projects like making an API.
+
+- We can use named returns also. Eg:
+    ```go
+    func divide(a,b int)(quotient int, remainder int){
+        quotient = a/b
+        remainder = a%b
+        return 
+        // We don't to specify quotient and remainder 
+        // in the return statement coz go compiler is 
+        // smart enough to understand that. Now that 
+        // you have mentioned quotient and remainder in 
+        // the return parentheses section, it will know 
+        // that it have to return these variables.
+    }
+    ```
+    
