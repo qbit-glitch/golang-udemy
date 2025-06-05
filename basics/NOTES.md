@@ -413,3 +413,21 @@ import (
     myMap5["map1"] = myMap4
     ```
 
+<br/>
+
+## Range
+
+- The `range` keyword in go provides a conventional way to iterate over various data structuress like arrays, slices, strings, maps and channels. It simplifies the process of iterating and accessing the elements without needing to deal directly with indices or iterators.
+
+- characters are called `runes` in Go.
+
+- Few things to keep in mind while using range : 
+- `range` keyword operates on a copy of the data structure it iterates over. Therefore modifying index or value inside the loop does not affect the original data structure.
+
+- For arrays, slices and strings, range iterates in order from the first element to the last.
+
+- For maps, range iterates over the key-value pairs but in an un-specified order.
+
+- For channels, range iterates until the channel is closed. So if the channel is not closed, range will keep iterating over that channel.
+
+- If we are not using any value, then we can use underscore, the blank identifier to prevent memory leaks by allowing Go's garbage collector to reclaim the memory.
