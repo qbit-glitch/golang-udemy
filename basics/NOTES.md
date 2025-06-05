@@ -344,3 +344,72 @@ import (
 - So it's not the capacity of the underlying array. It is the capacity of the slice that it can hold. And because the slice is started at a later point, it started at a different index, not at the index zero but at a different index, it may have a capacity which is lesser than the original array. But if we are truncating the slice before the end of the array, it will still count the elements that are past the end of the slice. That's we have the capacity of out `slice2` as 6.
 
 - In conclusion, slices in Go provide a powerful mechanism for working with collections of data, offering flexibility, efficiency, and ease of use compared to traditional arrays. They allow dynamix resizing and provide a powerful operations for manipulating sequences of elements.
+
+
+<br/>
+
+## Maps
+
+- Maps are a built in data-structure that assosciate keys with values. They are like dictionaries in other programming languages, and provide an efficient way to look-up data by a key.
+- Maps provide an efficient way to store and retrieve key value pairs. Each key must be unique within the maps and the keys are typically of a comparable type, like strings, integers.
+
+- Maps are unordered collections of key-value pairs, meaning that there is not guaranteed order when iterating over them.
+
+- 3 ways to create a map
+    ```go
+    1. var mapVariable map[keyType]valueType
+    2. mapVariable := make(map[keyTpe]valueType)
+    3. // Using a Map Literal
+        mapVariable := map[keyType]valueType {
+            key1: value1,
+            key2: value2,
+            key3: value3
+        }
+    ```
+- In case of a non-existent key, we get a zero value. If the key doesn't exist the zero value of the value type is returned.
+
+- If we want to delete a key-value pair, use the `delete()` function. 
+    ```go
+    delete(myMap, key)
+    ```
+
+- If we want to completely remove all the key-value pairs then we use the `clear()` method.
+
+- We get two values when accesing maps my keys. the first one is the `value` associated with that `key` and the second is an optional usable value is `bool` which indicates whether the key is present or not. use `ok` to represent the 2nd optional value i.e. true or false, it's a convention.
+
+    ```go
+    myMap := make(map[string]int)
+    myMap["key1"] = 9
+    myMap["key2"] = 20
+
+    value, ok := myMap["key1"]
+    fmt.Println(value)
+    fmt.Println(ok)  // returns true
+    ```
+
+- Maps also have an equality check.
+    ```go
+    if maps.Equal(myMap1,myMap2) {
+        // Code block to be executed when both maps are same
+    }
+    ```
+
+- If we want to iterate over the map, we use a for loop with `range`.
+    ```go
+    for key, value := range myMap{
+        fmt.Println(key, value)
+    }
+    ```
+
+- In real world scenarios, you may be required to only use the values and discard the keys present in the map. So in that case we can use underscore(_) to discard keys.
+
+- If we have a map that hasn't been initialized but only declared, then it is initialized to a nil value. The zero value of a map is `nil`.
+
+- Similar to arrays and slices we have `len()` function to get the length of the map.
+
+- We have the concept of nested maps where an outer map can have maps embedded inside it.
+    ```go
+    myMap5 := make(map[string]map[string]string)
+    myMap5["map1"] = myMap4
+    ```
+
