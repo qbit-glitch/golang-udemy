@@ -664,3 +664,51 @@ import (
 - We need to avoid deferred actions. Since os.Exit() bypasses deferred actions, to ensure that all necessaru cleanup operations are performed explicitly before calling `os.Exit()`.
 
 <br/>
+
+## Init function
+
+- In Go, the `init()` function is a special function that can be declared in any package. It's used to perform initialization tasks for the package before it is used.
+
+- Go execute `init()` functions automatically when the package is initialized. This happens before the main function is executed.
+
+- init function always gets executed before the main function and it occurs exactly once per package even if the package is imported multiple times. So if we are importing the package in multiple files, it will only happen once.
+
+- Order of execution : Within a single package, go executes the init functions in the order in which they are declared. If there are multiple init functions, they execute sequentially following their textual order in the package file.
+
+- Usage: Init function is commonly used for tasks such as initializing variables, performing setup operations, registering components or configurations and initializing state required for the package to function correctly. That's why it's called init function because it is initializing different things.
+
+- go automatically calls the init() function before executing the main function.
+
+- Practical Use Cases : 
+    - Setup Tasks
+    - Configuration
+    - Registering Components
+    - Database Initialization
+
+- Best Practices:
+    - Avoid Side Effects
+    - Initialization Order
+    - Documentation
+
+## Quiz Questions
+
+#### 1. Why does Go reuire a runtime though it compiles to machine code ?
+
+Ans:  ![Solution of Question 1](./assets/q1.png)
+
+#### 2. How does Go Optimized imported packages to reduce the final executable size ?
+
+Ans: ![Question 2 Solution](./assets/q2.png)
+
+#### 3. Which statment about Go maps is correct ?
+
+Ans: ![Questino-3 Solution](./assets/q3.png)
+
+#### 4. What is a key advanatge of using multiple return values in Go ?
+
+Ans: ![Question-4 Solution](./assets/q4.png)
+
+
+#### 5. What is a key rule when defining a variadic function in Go ?
+
+Ans: ![Question-5 Solution](./assets/q5.png)
