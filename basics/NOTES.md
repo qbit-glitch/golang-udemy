@@ -605,3 +605,38 @@ import (
 - Panicked only after running the defer functions. Once all defer functions are executed the program terminates with the panic message.
 
 - Misuse of panic can lead to unpredictable behavious and it should be avoided in scenarios where regular error handling suffices. 
+
+
+<br/>
+
+## Recover 
+
+- recover is a built in function that is used to regain control of a panicking go routine. It's only useful inside the defer functions and is used to manage the behaviour of a panicking go-routine to avoid abrupt termination.
+
+- A panic is a built-in function that stops the ordinary flow of control and begins panicking. When the function panic is called, the current function stops execution and any defered functions in that function are executed and then the control returns to the calling function. This process continues up the stack untill all the functions in the current go routine have returned at which point the program crashes and prints the panic message.
+
+- Recover is a built-in function that stops the propagation of a panic and returns the value passed to the panic call. When used in combination with defer, recover can be used to handle or log error gracefully and allow and allow the program to continue executing. SO when we use recover, we will continue to execute our program. It will not crash. However we will be able to log any error that happened when the program panicked. 
+
+- The recover function is called inside the defer function.
+
+- The defer keyword schedules a function to be executed just before the surrounding function. The `process()` function in our code returns regardless of whether it returns normally or due to an error. But defer function will be executed just before this function. The `process()` function returns.
+
+- If there is no panic, recover returns `nil`. So if recover is not returning nil that means a panic happened. So as soon as there is panic, recover returns the panic value.
+
+- So if it was an API then it would continue to run and it would not shut down abruptly. If we are using recovery mechanism, then our API, our gRPC API or our rest API will not shut down.
+
+- So what we actually do in recover is that instead of printing this to the console, so we will pass this error message to our error event handling mechanism. Or we will log this into a logger and we will log these messages along with more details like on which API endpoint was the error made, which user was logged in when this error was made, timestamp of the error, etc.
+
+- Practical Use Cases : 
+    - Graceful recovery
+    - Cleanup
+    - Logging and Reporting
+
+- Best Practices
+    - Always Use with Defer
+    - Avoid Silent Recovery
+    - Avoid Overuse
+
+- We use recover to perform cleanup operations like closing files, releasing resources in a defer function that uses recover to handle panics and most importantly logging and reporting. Log and report panics to understand and diagnose unexpected errors in production systems without halting the application.
+
+- Panics and recover should be used sparingly and only for exceptional unrecoverable errors. Normal error handling with return values or errors should be used for expected error, so do not overuse panics and recover.
