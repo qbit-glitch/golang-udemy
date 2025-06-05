@@ -578,3 +578,30 @@ import (
 - Defered functions should be short and simple to avoid unexpected behaviour and to keep the function's logic clear. Be aware of when arguments to defered functions are evaluated to prevent unintented consequences. And using defer in loops or nested functions can lead to subte bugs if not handled carefully.
 
 - defer is something like finally block in try-catch-finally in other languages. There are certain cleanup activities that we delegate to defer and finally as well. Defer ensures that critical actions are performed in a predictable manner regardless of how functions exit which is especially important for maintaining code realibility and readability.
+
+
+<br/>
+
+## Panic
+
+- In Go panic is a builtin function that stops the normal execution of a function immediately. When a function encounters a panic, it stops executing it's current activities, unwinds the stack and then executes any deferred functions. This process continues up the stack until all functions have returned, at which point the program terminates.
+
+- A panic is typically used to signal an unexpected error condition where the program cannot proceed safely.
+
+- The syntax of a panic function is called with an optional argument of any type, which represents the value associated with the panic.
+
+    ```go
+    panic(interface{})
+    ```
+
+- Interface means you can input any value of any type as an argument for this function.
+
+- If a function gives flexibility to input any value of any type then the argument type would be interface.
+
+- Defer will execute when the function returns a value, but it will also execute even when the function is panicking.
+
+- As soon as we encounter panic, anything after that will not be executed. As soon as we panic we are exiting out of the function. So all the statements after panic will not be executed. Anything after panic will not be reached by the runtime.
+
+- Panicked only after running the defer functions. Once all defer functions are executed the program terminates with the panic message.
+
+- Misuse of panic can lead to unpredictable behavious and it should be avoided in scenarios where regular error handling suffices. 
