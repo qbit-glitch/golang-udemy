@@ -542,3 +542,39 @@ import (
     ```
 
 - In conclusion, variadic functions provide a flexible way to define functions that can accept a variable number of arguments of a specific type. They are particularly useful when dealing with functions that need to handle different numbers of inputs dynamically.
+
+<br/>
+
+## Defer
+
+- In go differ is a mechanism that allows you to postpone the execution of a function until the surrounding functino returns. It's a useful feature for ensuring that certain cleanup actions or finalizing tasks are performed.
+
+- A defer statement is a function whose execution is deferred to the moment the surrounding function returns, either because the surrounding function executed a return statement reached the end of it's function body or because the corresponding go routine is panicking.
+
+- Go routines are functions which run in the background, which are running concurrently in the background and they are not the part of the main thread. So it is a little like async / await in NodeJS.
+
+- Any function which is a go-routine is thrown to the back so that it finished of it's work, not in main thread, not blocking the main thread but in the background, and then comes back and joins the main thread once it's finished.
+
+- So anything with defer, any statement or any function which has a defer keyword as it's prefix will be deferred till the end of that function. 
+
+- We can also have multiple deferred statements in a function, and they will be executed in a last in - first out order when the function returns.
+
+- arguments to differed functions are evaluated immediately when the differ statement is encountered. So just because the defer statement gets executed at the end doesn't mean that it is getting evaluated at the end. 
+
+- Defer Practical use cases : 
+    - Resource cleanup
+    - Unlocking Mutexes
+    - Logging and Tracing
+
+- Best Practices
+    - Keep Deferred Actions Short
+    - Understand Evaluation Timing
+    - Avoid Complex Control Flow
+
+- Defer is commonly used to ensure that resources like files or database connections are closed after they are opened.
+- When using Mutexes to synchronize GoRoutines, defer can be used to ensure that a mutex is unlocked even if a function panics.
+- Defer functions are also useful for logging and tracing entry and exit points of functions.
+
+- Defered functions should be short and simple to avoid unexpected behaviour and to keep the function's logic clear. Be aware of when arguments to defered functions are evaluated to prevent unintented consequences. And using defer in loops or nested functions can lead to subte bugs if not handled carefully.
+
+- defer is something like finally block in try-catch-finally in other languages. There are certain cleanup activities that we delegate to defer and finally as well. Defer ensures that critical actions are performed in a predictable manner regardless of how functions exit which is especially important for maintaining code realibility and readability.
