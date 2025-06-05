@@ -285,3 +285,62 @@ import (
 
 - Assign the copied array the address where the original array is by using the ampersand sign (`&`) with the originalArray.
 
+<br/>
+
+## Slices
+
+- Slices are dynamic flexible views into arrays. They provide a more powerful and convinient interface to sequences of data compared to arrays.
+- Slices are references to underlying arrays. They do not store any data themselves but provide a window into the array's elements. Slices can grow and shrink dynamically.
+- We have the same function `len()` which can check the length of the slice.
+- We also have a `cap()` function which can check the capacity of the slice. It will check the number of elements in the underlying array, starting from the slices' first element.
+
+- we can also initialize slices using `make`.
+    ```go
+    slice := make([]int, 5)  // slice of capacity 5
+    ```
+
+- We convert an array into a slice.
+    ```go
+    a := [5]int{1,2,3,4,5}
+    slice = a[1:4]      // element of index 1 to index 4 but not including 4 -> [2,3,4]
+    ```
+
+- We can also append more elements to a slice.
+    ```go
+    slice1 := []int{1,2,3,4}
+    slice1 = append(slice, 5,6,7,8)
+    ```
+
+- We can also copy a slice.
+    ```go
+    sliceCopy := make([]int, len(slice))
+    copy(sliceCopy, slice)
+    ```
+
+- Slices also have a concept of `nil` slices. A nil slice has a zero value and does not reference any underlying array. It is actually blank.
+
+- we can also iterate over slices using range based loops.
+
+- The slices package also contains many utility functions which are useful for our day to day programming.
+
+- using `Equal()` to compare two slices for equality.
+    ```go
+    if slices.Equal(slice1, sliceCopy){
+        fmt.Println("slice1 is equal to sliceCopy")
+    }
+    ```
+
+- slices also support slice operator. Syntax : 
+    ```go
+    slice[low:high]
+
+    slice2 := slice1[2:4]
+    ```
+
+- A slice once initialized is always assosciated with an underlying array that holds it's elements. A slice is a reference to an underlying array that holds the actual elements. A slice therefore shares storage with it's array and with slices of the same array. By contrast distinct arrays always represent distinct storage.
+
+- The array underlying a slice may extend past the end of the slice and the capacity is a measure of that extent. So the capacity of a slice is the sum of the length of the slice and the length of the array beyond the slice.
+
+- So it's not the capacity of the underlying array. It is the capacity of the slice that it can hold. And because the slice is started at a later point, it started at a different index, not at the index zero but at a different index, it may have a capacity which is lesser than the original array. But if we are truncating the slice before the end of the array, it will still count the elements that are past the end of the slice. That's we have the capacity of out `slice2` as 6.
+
+- In conclusion, slices in Go provide a powerful mechanism for working with collections of data, offering flexibility, efficiency, and ease of use compared to traditional arrays. They allow dynamix resizing and provide a powerful operations for manipulating sequences of elements.
