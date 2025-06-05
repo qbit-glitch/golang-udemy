@@ -640,3 +640,27 @@ import (
 - We use recover to perform cleanup operations like closing files, releasing resources in a defer function that uses recover to handle panics and most importantly logging and reporting. Log and report panics to understand and diagnose unexpected errors in production systems without halting the application.
 
 - Panics and recover should be used sparingly and only for exceptional unrecoverable errors. Normal error handling with return values or errors should be used for expected error, so do not overuse panics and recover.
+
+<br/>
+
+## Exit
+
+- In Go programming language, `os.exit()` is a function that terminates the programming immediately with the given status code. It's useful for situations where you need to halt the execution of the program completely, without defering any functions or performing any cleanup operations. That means the exit will be done in a hastly fashion without doing any cleanup or without running any deferred functions or any deferred statments.
+
+- The function takes an integer argument which represents the status code returned to the OS. Conventionally a status code of 0 indicates successful completion, while any non-zero status code indicates an error or abnormal termination. Calling os.exit() will not invoke deferred functions, including those registered using defer.
+
+- It by-passes the normal defer, panic and recover mechanisms.
+
+- Practical use cases : 
+    - Error Handling
+    - Termination Conditions
+    - Exit Codes
+
+- Best Practices :
+    - Avoid Deferred Actions
+    - Status Code
+    - Avoid Abusive use
+
+- We need to avoid deferred actions. Since os.Exit() bypasses deferred actions, to ensure that all necessaru cleanup operations are performed explicitly before calling `os.Exit()`.
+
+<br/>
