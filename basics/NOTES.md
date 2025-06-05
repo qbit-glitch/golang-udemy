@@ -1,3 +1,5 @@
+# GO Programming Basics
+
 ## Import
 
 - Tree Shaking and it's application
@@ -431,3 +433,56 @@ import (
 - For channels, range iterates until the channel is closed. So if the channel is not closed, range will keep iterating over that channel.
 
 - If we are not using any value, then we can use underscore, the blank identifier to prevent memory leaks by allowing Go's garbage collector to reclaim the memory.
+
+
+<br/>
+
+## Functions
+
+- Functions are fundamental building blocks in go, encapsulating reusable code blocks that can be invoked multiple times with different inputs. They play a crucial role in structuring go programs by promoting modularity and code reusability.
+
+    ```go
+    func <name> (parameters list) returnType {
+        // Code Block to be executed
+        return value
+    }
+    ```
+
+- A function name should be a valid identifier and should follow go naming conventions. When we are making a public function, it should start with an uppercase letter and if it's a private function, then it needs to start with a lowercase.
+
+- example of public function : 
+    ```go
+    Println()  // -> under the fmt package
+    ```
+
+- returnType specifies the type of the values returned by the function. We also have an option of returning multiple values and it is one of the unique aspects of Go language and a very very useful feature to make highly efficient code base.
+
+- Arguments that are passed to afunction are copied into the function's parameters. Modification to the parameters inside the function do not affect the original arguments, so never expect the original argument to be updated if the parameters are updated inside the function.
+
+- Another type of functions is `Anonymous Functions`. We can call them `closures` or `function literals`. These are functions defined without a name directly in line where they are used.
+
+    ```go
+    func(){
+        fmt.Println("Hello, Anonymous Function")
+    }
+    ```
+    or,
+    
+    ```go
+    greet := func(){
+        fmt.Println("Hello, Anonymous Function")
+    }
+    greet()     // Now greet becomes the function, so we can execute it like a function.
+    ```
+
+- We can use functions as types and functions in Go can be assigned to variables passed as arguments to other functions and returned from functions, making them a first class object or a first class citizen.
+
+- So the concept of first class objects/citizens in programming refers to entities that have no restrictions on their use and can be treated uniformly throughout the language. When an entity is a first class citizen, it means you can perform a wide range of operations on it, just as you would with basic data types like integers or strings. These operations typically include passing as arguments, returning from functions, assigning to variables or storing the data structures. 
+
+- So you can pass the entity as an argument to functions. That means, if the functions are first class objects/ citizens, they can be returned from another functions.
+
+- Similary we can assign the entity to a variable. A first class citizen can be assigned to a variable.
+
+- And you can also store the entity in data-structures like arrays, lists or maps. 
+
+- We can use functions in any capacity that we want.
