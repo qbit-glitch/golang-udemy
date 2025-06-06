@@ -247,6 +247,58 @@
 
 ## `fmt` Package
 
+- The `fmt` package includes functions for printing to standard output, returning formatted strings and snaning input.
+
+- Some Key Functions of fmt package : 
+    - Printing functions
+        - Print()
+        - Println()
+        - Printf()
+    - Formatting Functions
+        - Sprint()
+        - Sprintf()
+        - Sprintln()
+    - Scanning Functions
+        - Scan()
+        - Scanf()
+        - Scanln()
+    - Error Formatting functions
+        - Error()
+
+- We hace the `Sprint()` function which formats using the default formats for it's operands and returns the resulting string. It doesn't print anything to the console. It only returns the resulting string.
+
+- The formatting functions that we have in Go like Sprint(), Sprintln(), etc., these quite evidently can also be used to concatenate strings. 
+
+- Sprint() does not add a space in between the different values.
+
+- Sprintln() is a little advanced method which adds spaces in between the arguments and also adds a new line character at the end.
+
+- Sprintf() function formates according to a format specifier and results the resulting string.
+
+- fmt pacakge also brings us some functions that can help us take input from the user through the console.
+
+- The `Scan()` function scans the text from the standard input and stores it into the provided variables. So we have to provide a variable for the input to be stored into.
+
+- We have to the direct memory address to scan the input and store it inside the variables passed in the scan function. Because if we pass variables as arguments, the actual variable will not be passes to the function, instead a copy of that variable will be passed, so all the modifications will be done on the copy of the variable and not the actual variable. In order for us to modify the actual variables we give the memory address to `fmt.Scan()`.
+
+- Moreover, Scan() has three dots that means it can accept `Variadic Parameters`. That means it can be multiple parameters or none.
+
+- `Scanln()` function is similar to Scan() but it stops scanning at a new line and requires that there be exactly one item per input.
+
+- Scan() does not accepts a blank input
+
+- `Scanf()` function scans text from standard input, storing successive space separated values into successive arguments as determined by the format specifier.
+
+- We have to enter our inputs in the exact format that we have declared in the `Scanf()` function.
+
+- The `Errorf()` function formats according to a format specifier and returns the string as a value that satisfies the error interface.
+
+- If there's an error, first we declare a code block to handle the error and then we move on to handling the value, whatever we want to do with the value.
+
+- In conclusion, the fmt package is an essential tool for Go developers providing robust functions for formatting and printing text, scanning input and handling errors.
+
+- In APIs `Sprint()` functions are used extensively.
+
 
 
 ## Structs
