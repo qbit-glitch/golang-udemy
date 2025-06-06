@@ -424,6 +424,18 @@
 
 ## Struct Embedding
 
+- Struct embedding allows a struct to inherit fields and methods from another struct type. It's a powerful mechanism for code re-use and structuring data.
+
+- Methods can be overridden by redefining them in the outer struct.
+
+- Anonymous fields promote all fields and methods of the embedded struct while named fields require accessing fields with their explicit names.
+
+- Best Practices and Considerations
+    - Composition over inheritance
+    - Avoid Diamonf Problem
+    - Clarity and Readability
+    - Initialization
+
 
 
 ## Generics
