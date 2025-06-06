@@ -46,6 +46,30 @@
 
 ## Recursion
 
+- Recursion is the process of a function calling itself. It breaks down a problem into smaller sub-problems of the same type until they become simple enough to solve directly.
+
+- In every recursive function, there is a base case which is a condition where the function stops calling itself and returns a value. Without a base case, the recursion would continue indefinitely, leading to a stack overflow. And apart from the base case we have a recursive case. This is where the function calls itself with a smaller or simpler input to make progress towards the base case.
+
+- Practical Use cases : 
+    - Mathematical Algorithms
+    - Tree and Graph Traversal
+    - Divide and Conquer Algorithms
+
+- Benefits of Recursion
+    - Simplicity
+    - Clarity
+    - Flexibility
+
+- Considerations
+    - Performance
+    - Base Case
+
+- Best Practices
+    - Testing 
+    - Optimization
+    - Recursive Case
+
+- Sometimes a recursive solution can be optimized using techniques like memoization. Memoization is caching results of expensive function calls.
 
 
 ## Pointers
