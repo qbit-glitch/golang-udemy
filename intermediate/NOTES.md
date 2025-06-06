@@ -74,6 +74,46 @@
 
 ## Pointers
 
+- A pointer is a variable that stores the memory address of another variable. 
+
+- Everytime we execute go run, a new executable is made. So Go Run makes a temporary executable each time we execute `go run`.
+
+- The zero value of a pointer is `nil`
+
+- When we are using pointers, the actual memory address of the variable is passed on to the function. And now the function is accessing the memory address where the number ten is stored by a.
+
+- Use cases : 
+    - Modify the value of a variable indirectly
+    - Pass large data structures efficiently between functions
+    - Manage memory directly for performance reasons.
+- Pointer Declaration and Intialization
+    - Declaration Syntax :
+        ```go
+        var ptr *int
+        ```
+        `ptr` is a pointer to an integer
+    
+    - Initialization :
+        ```go
+        var a int = 10
+        ptr = &a
+        ```
+        `ptr` now points to a's memory address
+
+- Pointer Operations: Limited to referencing(`&`) and dereferencing(`*`)
+
+- Nil Pointers
+- Go does not support pointer arithmetic like C or C++
+- Passing Pointers to functions
+- Pointers to Structs
+- Use pointers when a function needs to modify an argument's value
+- `unsafe.Pointer(&x)` converts the address of `x` to `unsafe.Pointer`
+
+- We will be taking up gRPC and Protocol Buffers and we will be using pointer a lot in Protocol Buffers and gRPC.
+
+- Go also have an `unsafe` package and go's unsafe package allows low level operations like direct memory access and typecasting useful in certain advanced scenarios.
+
+- In conclusion, understanding and mastering pointers in Go opens doors to more efficient memory management, enhanced control over data structures and access to low level operations when necessary.
 
 
 ## String and Runes
