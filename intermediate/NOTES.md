@@ -303,6 +303,73 @@
 
 ## Structs
 
+- Structs in Go are composite data types that allow you to group together different types of variables under a single name. They are similar to classes in Object Oriented Languages, but they are more lightweight and do not support inheritance.
+
+- Structs are defined using the `type` and `struct` keywords followed by curly braces `{}` containing a list of fields. 
+- Fields are defined with a name and a type.
+- Anonymous Structs
+- Anonymous Fields
+
+- Methods : 
+    ```go
+    func (value/pointer receiver) methodName(arguments, if any ...) <return type, if any> {
+        // Method implementation
+    }
+    ```
+
+- Method Declaration
+    - Value receiver method
+        ```go
+        func (t Type) methodName() {
+            // Method Implementation
+        }
+        ```
+    - Pointer receiver method
+        ```go
+        func (t *Type) methodName(){
+            // Method Implementation
+        }
+        ```
+
+- Comparing Structs
+
+- Structs can be initialized using a struct literal. We can provide values for individual filed during initialization. As with any variable, if we omit any field in a struct, it will be initialized with it's zero value.
+
+- Fields are accessed using a dot notation.
+
+- Similar to functions we also have anonymous structs. These anonymous structs are structs without a predefined type name. They are useful for temporary data structures.
+
+- Go supports attaching methods to structs. Methods are functions associated with a specific type. Methods are defined with a receiver, which is the struct type upon which the method operates.
+
+- Always define methods and structs outside the main function. Defining alone a struct inside main is fine but when there are methods associated with that struct inside the program, we cannot define the methods inside main function. 
+
+- Structs and methods must be defined at the package level, not within the functions. It is by design in Go and that is because Go requires types and their associated methods to be declared in the global scope which is accessible throughout the package.
+
+- Another reason why structs and methods cannot be inside main is because of separation of concerns. Keeping type definitions and methods outside the main function ensures clear separation between data definitions and execution logic. This makes code more readable and more maintainable.
+
+- We can create instances of structs and we can call methods on those instances inside the main function. And other thing that we can do inside main function is implement our application logic and interact with our structs and their methods.
+
+- We do not configure the methods inside the structs. So why are methods not inside struct declarations ?
+    - the first reason is design philosophy. Go emphasizes simplicity and clear separation between data types and methods. Methods are defined outside of the struct declaration to maintain a clear distinction between data and behaviour. The behaviour is dependent on the methods and data is the data types, the properties of the classes and the structs.
+
+    - However in classes, we have class properties and methods inside the same class. The class properties of classes are like data types and the methods are similar to the methods declared in Go langauge.
+
+    - Another reason is flexibility. Now this approach that we are defining the methods separately from structs, this approach allows methods to be defined for any type, not just structs and facilitates code organization and modularity.
+
+- To modify struct fields within a method, we use a pointer receiver instead of a value receiver. Pointer receivers allow the method to modify the original struct instance.
+
+- Pointers make the actual memory address available to the function. But if we are using value receiver it means we are passing the value to a function and it will not modify the original value. So in order to access the original value and modify that, we have to use a pointer.
+
+- Go supports embedding structs within other structs. This allows for creating a composition of structs.
+
+- We can define structs with anonymous fields as well. It simplifies the structure definition by promoting the fields of the anonymous struct to the outer struct. In Go, anonymous fieds in struct must be a type. If you declare a field like phone it needs to be of a specific type.
+
+- Anonymous fields simplify the structure definition by promoting the fields of the anonymous struct to the outer struct.
+
+- Structs are comparable if all their fields are comparable. You can compare two structs of the same type using the equality operator.
+
+
+
 
 
 ## Methods
