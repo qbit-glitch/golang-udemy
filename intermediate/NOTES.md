@@ -397,6 +397,29 @@
 
 ## Interfaces
 
+- Interfaces promote code reuse, decoupling and polymorphism without relying on explicit inheritance.
+
+- An interface is declared using the `type` keyword followed by a name and keyword `interface` and a list of method signatures.
+
+- Interfaces are also declared outside the main function.
+
+- A type implicitly satisfies an interface if it implements all the methods defined by that interface.
+
+- Any method or any function that needs to be exported should start with an uppercase letter. So in order for us to export any method, struct or any type we have to name that type with an uppercase alphabet.
+
+- All a struct needs to do is implement all the methods defined in that interface. All the methods that are defined in an interface should be implemented by that struct to be able to get associated with that interface type.
+
+- An interface in Go is a way to define a set of methods that other types must implement in order for them to be considered the type that, which the interface if of.
+
+- `any` is an alias of interfaces.
+
+- We can use interface when we are ready to accept any type of value in our function. So if I use a vairadic parameter that means we can accept any number of values of different types.
+
+- Interface means that you are flexible to any kind of value.
+
+- Use empty interfaces judiciously typically for scenarios requiring dynamic types or unknown types.
+
+- Interfaces in Go facilitate Polymorphism and enable writing modular, testable and maintainable by promoting loose coupling between types.
 
 
 ## Struct Embedding
