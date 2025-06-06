@@ -370,10 +370,29 @@
 
 
 
-
-
 ## Methods
 
+- We make methods by declaring a receiver. The receiver will be a struct and that receiver will be associated with that method. So these methods are functions associated with a particular type not necessarily with struct. 
+
+- So methods are not just associated with structs. They can be associated with any specific type. Methods enable us to define behaviors and we define behaviours by using functions. So we define these behaviors that operate on instances of that type.
+
+- Methods are essential in Go for encapsulating behavior specific to a type and promoting code reuse through structured and organized code. 
+
+- Methods are declared with a receiver which specifies the type that the method operates on and there are two type of receivers in Go : value receivers and pointer receivers.
+
+- We use a value receiver if the method does not modify the receiver instance. We use a pointer receiver if the methos needs to modify the receiver instance, or if you want to avoid copying large structs because copying large structs means you are occupying a bing chunk in the memory.
+
+- It's not a thumb rule that you have to create an instance. You can use the type to associate the function with that type to make it a method of that type.
+    ```go
+    type MyType int
+
+    func (MyType) welcomeMessage() string{
+        return "Welcome to MyType"
+    }
+    ```
+    - We don't need an instance because we are not accessing any data inside this type. So we need to use instance only if we are using the instance for extracting or modifying the value.
+
+- Struct embedding allows methods of an embedded structs to be promoted to the outer struct.
 
 
 ## Interfaces
