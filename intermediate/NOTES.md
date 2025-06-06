@@ -118,6 +118,83 @@
 
 ## String and Runes
 
+- A string is a sequence of bytes. Bytes are unsigned int8 (`uint8`) values. They often represent text. A sequence of bytes represent text.
+
+- Strings are immutable meaning, once created, their values cannot be changed.
+
+- Strings can be created with double quotes `" "` or backticks "`". Backticks are used for raw string literals. In raw string literals the escape sequences will be discarded and everything will be treated like a character and it will print everthing out the way it was written.
+
+    ```go
+    message := "Hello\nWorld"  // Hello and World on different line
+    rawMessage := `Hello\nWorld`  // Hello\nWorld as output
+
+    message2 := "Hello, \rGo!"  // Go!lo,
+    ```
+- `\r` takes the cursor to the first position in the line.
+
+- Strings are an array of unicode characters. And these unicode characters i.e. each alphabet that we see, in Go it is called `rune`.
+
+- Rune is an integer value that represents a character.
+- Since strings is an array of characters, it also has a length. We can get the length of the string using the same `len()` function for arrays, slices.
+
+- All escape sequences are treated as 1 character.
+
+- When we are using concatenation, we are joining two strings. And when Go is joining two strings, it will not autmatically insert a space between them. It only happens when we are using a print statement and we are using thode different variables seperated by a commas. So it knows, that these are different variables with different content and they could mean different, so that's why it automatically inserts a space between them. But when it comes to concatenation, it knows that we want to join two strings and that's why it doesn't apply any space in between.
+
+- Lexicographic Comparison : It is a method of comparing sequences such as strings based on the alphabetical order of their components. In Go, lexicographic comparison is used to compare strings. This comparison is essential for sorting, searching and other operations that involve ordering strings.
+
+- If one string is a prefix of another, the shorter string is considered smaller.
+
+- The compiler is comparing the ASCII value of the characters.
+
+- When it comes to string iteration, it's just like iterating over a slice or an array. It will have an index and a value.
+
+- `%x` placeholder/format verb is used to get the hexadecimal value of a character.
+
+- `RuneCountInString()` -> counts the utf-8 characters in a string.
+
+- Strings a immutable that means, operations like appending, replacing or modifying, require creating new strings. So we have to manipulate strings by creating new strings.
+
+- We cannot append append more runes, more characters at the end or in the middle or in the begining using any method. So for that we have to create a new string and then perform a concatenation or whatever that we want to manipulate those string variables.
+
+- A `rune` is an alias for int32 and it represents a Unicode code point, a Unicode value. So it is not a character, it is an integer value. A rune is an integer value and that value represents a Unicode code point and that will be converted into a character.
+
+- So runes are used to represent individual characters in a string, and they facilitate working with Unicode characters efficiently. 
+
+- Using Unicde, Go encopassess characters from a lot of languages accross the globe and that makes the jobs of the programmers much easier because we have characters from many, many languages that are used accross the world.
+
+- A rune is declared with the type as `rune`. Runes are declared using single quotes. Double quotes and backticks are for strings.
+    ```go
+    var ch rune = 'a'
+    ```
+
+- Rune literals are single quoted characters representing Unicde code points.
+
+- Runes facilitate handling of Unicode characters, supporting internationalization and mutilingual text processing.
+
+- We have support for Smileys in Go language. We can use smileys directly in go as chacters.
+
+- Strings provide a convenient abstraction for working with textual data, while runes enable precise handling of individual characters and support for diverse languages.
+
+- Runes and Characters
+    - Similarities
+        - Representing Characters
+        - Storage Size
+    - Differences
+        - Unicode Support
+        - Type and Size
+        - Encoding and Handling
+
+- Both runes and characters typically occupy a fixed amount of memory. Runes in Go are represented by int32 and represent 4 bytes of memory, allowing them to represent any unicode code point characters. But characters are usually represented by `char` which typically occupy one byte of memory.
+
+- Runes can represent any unicode code points from ASCII to more complex characters like emojis and non-latin scripts as well. While C also supports characters beyond ASCII through multibyte encodings like utf-8, handling unicode characters directly is not as straightforward as in Go. C libraries and implementations may vary in their support for Unicode.
+
+- Go natively supports Unicode and provides built-in support for handling runes through it's `rune` type and unicode utf-8 package as well. This makes it straight forward to iterate over and manipulate Unicode strings.
+
+- So Go's native support for Unicode and runes make it easier to develop applications that need to handle diverse character sets and languages. So if we are making an appplication where we need to generate text in different languages. Go has a native support for all the languages world-wide.
+
+- Runes provide a more modern and robust approach for handling Unicode and international text representing Go's design philosophy of simplicity and efficiency in text processing.
+
 
 
 ## Formatting Verbs
