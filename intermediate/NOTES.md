@@ -525,6 +525,21 @@
 
 ## Custom Errors
 
+- Custom Errors can encapsulate specific details about what went wrong, making it easier to debug and understand the root cause of errors. It provides an enhanced error context.
+
+- Context and custom errors allow us to distinguish between different types of errors and handle them differently in our application logic.
+
+- Custom errors also ensures consistency in error handling accross our code base, promoting maintainability.
+
+- In Go, custom errors are nothing but types that implement the error interface. It requires the implementation of errxor method that returns a string.
+
+- When we are handling errors, we have to return so that the rest of the statements do not get executed. That's the point of handling the error, right ?
+
+- **Wrapped Errors** : Wrapped Errors were introduced after Go version 1.13. `%w` formatting verb stands for wrapped error.
+
+- Our custom error helps us to pass on the error message much more efficiently and much better error description from multiple functions that we are executing in a nested way.
+
+- In conclusion, custom errors in go enhance our error handling by providing more context and differentiation in error reporting.
 
 
 ## String Functions
