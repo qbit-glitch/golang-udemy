@@ -544,6 +544,117 @@
 
 ## String Functions
 
+- Strings in go are a sequence of bytes and Go provides a rich set of built-in functions and methods to manipulate and work with strings effectively.
+
+- Functions
+    - integer to string : 
+        ```go
+        num := 18
+        str := strconv.Itoa(num)
+        ```
+
+    - string splitting
+        ```go
+        fruits := "apple,orange,banana"
+        parts = strings.Split(fruits, ",") // ["apple", "orange", "banana"]
+        ```
+        - `strings.Split()` converts your original string into an array and it divides that string based on the seperator value that you give it.
+
+    - `strings.Join()` -> concatenates elements of a slice into a single string with a separator.
+        ```go
+        countries := []string{"Germany", "France", "Italy"}
+        joined := strings.Join(countries, ", ")
+        ```
+
+        Go is smart enough to add separator only between the consecutive words and not after the last word.
+
+    - Function to check if a string contains a subset characters, it could be one character or multiple characters combined.
+        ```go
+        strings.Contains(str, "test") // returns true or false.
+        ```
+
+    - `strings.Replace()` -> Replaces the occurances of a substring within a string with another substring.
+        ```go
+        strings.Replace(str, <string to be replaced>, <string by which it is replaced>, <no. of occurances to be replaced>)
+
+        strings.Replace(str, "Go", "World")
+        ```
+
+    - We can also trim leading and trailing whitespace from our string. 
+        ```go
+        strwspace := " Hello Everyone! "
+        fmt.Println(strwspace.TrimSpace(strwspace)) // "Hello Everyone!"
+
+    - We can change the case of our strings to lower or to upper during the runtime.
+        ```go
+        fmt.Println(strings.ToLower(strwspace))
+        fmt.Println(strings.ToUpper(strwspace))
+        ```
+
+    - `strings.Repeat()` -> repeat something for a fixed number of times.
+        ```go
+        fmt.Println(strings.Repeat("foo", 3))  // foofoofoo
+        ```
+    - We can also count the occurance of an alphabet or a substring inside another string.
+        ```go
+        strings.Count("Hello", "l")   // 2
+        ```
+
+    - We can also check for prefix and suffix. 
+        ```go
+        fmt.Println(strings.HasPrefix("Hello", "He")) // true
+        ```
+
+        ```go
+        fmt.Println(strings.HasSuffix("Hello", "la")) // false
+        ```
+ 
+- Go offers us a regular expression package which allows pattern matching and manipulation of strings based on complex rules.
+
+- `regexp` is a package in Go and `MustCompile()` is a method defined in `regexp` package.
+
+- MustCompile() -> is a function that compiles a regular expression. A regular expression is something yes which needs to be compiled. 
+
+- The pattern needs to be inside Backticks. Regular Expressions needs to be enclosed in backticks to be considered a raw string literals. When we are using regular expressions we are defining a pattern and that pattern needs to be matched. So regular expression matches the pattern that we define with different values.
+
+-  d -> digits
+    +   -> it has to be one or more
+    eg: `\d+`   -> It has to be one or more digits
+                -> check for multiple digits
+    
+    ```go
+    str5 := "Hello, 123 Go! 78"
+    re := regexp.MustCompile(`\d+`)
+    matches := re.FindAllString(str5, -1)
+    fmt.Println(matches)
+    ```
+
+    -1 indicates that we are looking for all the matches for that regular expression inside the source string.
+
+    `FindAllStrings()` -> returns an array of strings. It's going to extract all the matches and store them successively in a slice. So it returns a slice of strings. So we have to store the slice in a variable.
+
+- We have another package which let's us work on Unicode characters and strings and that is called the unicode `utf8` package. `utf8.RuneCountInString` returns the number of runes present in the string.
+
+- Since strings are immutable in Go, we have something called `strings.Builder()` for efficient string concatenation in performance critical scenarios.
+
+- `strings.Builder()` is a type in Go's standard library specifically in the strings package that provides efficient strings building. It's designed to help you concatenate strings in a memory efficient wat instead of creating many intermediate strings, which can be expensive in terms of memory and processing time. `strings.Builder()` allows you to build your final string incrementally.
+
+- strings.Builder() is more efficient than using the concatenation (`+`) operator or even when using `fmt.Sprintf()` fo concatenating multiple strings. strings.Builder is still much better than these options because it minimizes memory allocations and copies.
+
+- Builder provides several ways for adding content such as write, writeString, writeRune and writeByte. and builder can be used immediately after declaration without initialization.
+
+- A builder can be reused by calling the reset method which clears it's internal buffer. The final string can be retrieved using the string method.
+
+- We can keep on building that string. And this builder is memory efficient and prevents memory leaks. It does not make copies. It keeps on building the string in a memory efficient way and in a memory secure way.
+
+- we have to include character in `builder.WriteRune()` and characters are stored in single quotes.
+
+- builder keeps on writing to the existing string that it has stored in its memory. So everything that we write a rune, a string or anything, it will keep on adding to the existing data that it has.
+
+- So in order for us to start a new string, we need to reset the builder.
+
+- When it comes to memory efficiency, prefer strings.Builder or bytes.Buffer for building large strings to avoid unnecessary memory allocations.
+
 
 
 ## String Formatting
