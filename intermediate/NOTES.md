@@ -807,6 +807,33 @@
 
 ## Time
 
+- Time handling in Go is essential for dealing with dates, times, durations and time zones. It provides functionalities to create, manipulate, format and compare times. 
+
+- In Go, time values are represented by the `time.TimeStruct()`. You can create time values using various methods like `time.Now()`, `time.Date()` or `time.Parse()`.
+
+- `time.Parse()` -> accepts a layout string and a value string. Now this layout it's for a very specific date.
+
+- In Go, when we are using time.Parse() we need to use a reference time. We can use it in any format but that date and time has to be specific. It's actually in a format like this: `Mon Jan 2 15:04:05 MST 2006`
+
+- So we have to convert our date into any format that we want and then get our input to be used as a date, to be processed as a date.
+
+- The first argument in out time.Parse is a reference layout. So this will be the layout of the value that we are passing to this argument because it is going to check this layout against it's default value and it is going to understand the format YYYY-MM-DD
+
+- The reference time for the Go compiler or Go runtime is `Mon Jan 2 15:04:05 MST 2006`. So they are going to reference your layout with this value.
+
+- If we already have a time and we need to format it according to our need then we will use `time.Format()`.
+
+- time.Parse() takes string and time.Format() works on a time type of value, a value which is already of type time.
+
+- We can add and subtract durations. We can also round or we can truncate time. We use `time.Add()` for addition and we use `time.Round()` and `time.Truncate()` for rounding out or truncating time to the nearest or previous duration.
+
+- So what truncation does is, it rounds down the time. So time.Truncate() is similar to time.Round() but time.Round() can go up and it can round off the time to the next hour. But truncate will always round down the time, so it will always go doen when giving the output.
+
+- In conclusion, time handling in Go provides powerful functionalities for creating, manipulating, formatting and comparing time values. And by understanding these concepts, these methods you can effectively manage date and time operation in your applications, ensuring accurate and reliable time based functionality.
+
+- Understanding time zones, durations and arithmetic operations is crucial for comprehensive time management in your go programs.
+
+
 
 
 ## Epoch
