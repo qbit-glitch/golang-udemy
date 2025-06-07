@@ -675,6 +675,90 @@
 
 ## Text Templates
 
+- Text templates in go are a powerful feature that allow you to define and execute templates for generating text output. They are particulary used when you need to generated structured texts wuch as HTML, JSON, SQL Queries or any other formatted text output.
+
+- A template is a string or a file that contains one or more action sequences. These actions control the template execution, such as inserting values, iterating over data or executing conditionals.
+
+- Concept of Actions: These actions are enclosed in double curly braces. There are several types of actions like variable insertion.
+
+    - Variable Insertion: [{.FieldName}]
+    - Pipelines: {{functionName .FieldName}}
+    - Control Structures: {{if .Condition}} ... {{else}} ... {{end}}
+    - Iteration: {{range .Slice}} ... {{end}}
+
+- Advanced Features
+    - Nested Templates: {{template "name" .}}
+    - Functions
+    - Custom Delimiters
+    - Error Handling: template.Must()
+
+- Use Cases
+    - HTML Generation
+    - Email Templates
+    - Code Generation
+    - Document Generation
+
+- Best Practices
+    - Separation of Concerns
+    - Efficiency
+    - Security
+
+- Templates are executed by applying them to data structures known as Template Data. These data structures can be simple values, structs, slices, maps or any custom types that you define.
+
+- Templates are a part of 2 packages:
+    - We have text template as well as html template package. HTML template package has some advanced features that text template package does not have. Text template package has basic features of templating. 
+
+- Once we have create a template, we have to parse the template, we have to process that template. We use `.Parse()` method. It takes an argument which is a string, but this string is not a usual string. This is actually a string that we want to be processed as a template.
+
+- Template is something that we can reuse repeatedly for different values, and the name is going to be changing everytime we use this template. 
+
+- To output the message from the template use `.Execute()` function on that template. It will return an error if there is one so make sure to handle the error in a variable.
+    ```go
+    err := tmpl.Execute(os.Stdout, data)
+    ```
+
+- Execute takes the first argument as the target, the destination where it needs to send the output to. So we are sending our output to the standard output device of our computer which is the console. And the next argument is the data.
+
+- There's another way of using template via using `template.Must()` where we don't have to handle the errors ourselves and template.Must() will automatically panic if we have an error while parsing our template.
+
+    ```go
+    tmpl := template.Must(template.New("example").Parse("Welcome, {{.name}}! How are you doing?\n"))
+    ```
+
+    this code is equivalent to :
+    ```go
+    tmpl, err := template.New("example").Parse("Welcome, {{.name}}! How are you doing?\n")
+    if err != nil {
+        panic(err)
+    }
+    ```
+- .Must() is used to handle the error from the parse. And we'll not have to handle the error ourselves, which will save us some more typing and which will make our code mmore readable.
+
+- template.New() -> creates a new template and it takes the name of the template as an argument.
+
+- template.Parse() -> parses the template definition. So it takes a string and that string is in the format of template that we want. And then template.Parse will process the string and convert it into a template that we will use further in our program. So `template.Parse()` helps us to parse the template string and it turns the string into a reusable template object that can be executed with custom data.
+
+- `template.Execute()` -> used to apply a parsed template to a data structure and write the result to an output destination. It could be a file or it could be a console or something else.
+
+- `bufio` -> Buffered input output package.
+- `bufio.NewReader(os.Stdin)` -> to read from the console. Console is the standard input device.
+- to get the input from the user :
+    ```go
+    reader := bufio.NewReader(os.Stdin)
+    ```
+
+- .ReadString() -> takes an argument as a delimeter. So that means it is going to accept the input from the console until it reads the delimeter from the console. It takes a `bytes` type as an argument, that's why we have to use single quotes.
+    ```go
+    reader.ReadString('\n')
+    ```
+- `ReadString()` -> generates a string and an error so handle both of them by storing them in the variable. Always read strings from the console and then convert them to whatever you want.
+
+- Best Practices
+    - Separation Of Concerns: Keep your templates focused on presentation logic avoiding business logic.
+    - Precompile you templates for re-use if performance is critical to your application.
+    - Also sanitize inputs to prevent injection attacks, especially when generating HTML because there are a lot of attacks which happen using the user input.
+
+- Overall, text templates in Go are a powerful tool for generating textual output based on structured templates and dynamic data. They offer flexibility, ease of use and support for complex scenarios like conditional logic, iteration and function invocation within templates whether for web applications, system administration scrips or data processing tasks.
 
 
 
