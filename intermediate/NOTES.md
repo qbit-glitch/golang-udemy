@@ -458,13 +458,68 @@
 
 
 
-
-
 ## Intermediate Quiz 1
 
+![Quiz 1](./assets/quiz1/q1.png)
+<br/>
+
+![Quiz 1](./assets/quiz1/q2.png)
+<br/>
+
+![Quiz 1](./assets/quiz1/q3.png)
+<br/>
+
+![Quiz 1](./assets/quiz1/q4.png)
+<br/>
+
+![Quiz 1](./assets/quiz1/q5.png)
+<br/>
 
 
 ## Errors
+
+- Errors are a funcdamental part of any programming language, allowing programs to handle exceptional conditions gracefully.
+
+- In Go, Errors are represented by the error interface, which is a built-in type used to indicate the presence of an error condition. 
+
+- Errors are typically created by using the `errors` package or by implementing the error interface.
+
+- Do not unnecessarily use uppercase when naming structs or any other type, always make sure that you use uppercase only when you are exporting your type, your struct or anything else outside the package.
+
+- Example:
+    ```go
+    func main() {
+        if err1 := eprocess(); err1 != nil {
+		fmt.Println(err1)
+		return
+	    }
+    }
+    type myError struct{
+	message string
+    }
+
+    func (m *myError) Error() string{
+        return fmt.Sprintf("Error: %s", m.message)
+    }
+
+    func eprocess() error {
+        return &myError{"Custom Error Message"}
+    }
+    ```
+- We are using Error() because Go has a built-in package. The Go's built in package have an interface which is the error interface. The error interface has a single method which is `Error()`. An in Go an error is represented by the error interface, and this error method returns a string that describes the error.
+
+- So by utilizing this interface, we can propagate our custom error messages as we please. Because it is an interface, we can modify it according to our requirements. We can use multiple lines, multiple kinds of data. We can use different kinds of formatting whatever we want because it is an interface. And interfaces are completely blank, all you need to do is implement the methode.
+
+- Official error interface implementation of Go
+    - [Offical Go Builtin Package github](https://github.com/golang/go/blob/master/src/builtin/builtin.go)
+
+    ![Error Interface](./assets/error_interface.png)
+
+- Error method needs to return a string and that's why our Error() method returned a string. 
+
+- When we are using any function from the built in package it is available to us by default. The built-in pacakage is part of the Go runtime and is special in that it provides the foundations for the language itself. Therefore you can use fundamental types and functions directly in your code.
+
+- In conclusion, error handling in go revolves around the error interface and idiomatic practices like checking errors, propagating errors and custom error types. Proper error handling ensures that programs are robust and reliable, providing clear feedback on exceptional conditions.
 
 
 
