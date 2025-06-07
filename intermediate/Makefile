@@ -3,3 +3,4 @@
 run:
 	mkdir ./$(FILE)
 	touch ./$(FILE)/$(FILE).go
+	code ./$(FILE)/$(FILE).go

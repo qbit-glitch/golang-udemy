@@ -764,6 +764,45 @@
 
 ## Regular Expressions
 
+- Regular expressions provide a powerful way to search, manipulate and validate text strings based on patterns. They are widely used in text processing, searching and data extraction tasks where patterns of characters need to be matched or manipulated.
+
+- In Go, the regular expression package provides support for working with regular expressions.
+
+- To work with the regex pattern in Go, you first compile it using the `regexp.Compile()` or `regexp.MustCompile()`.
+
+- regular expression to match email address
+    ```go
+    re := regexp.MustCompile(`[a-zA-Z0-9._+%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}`)
+
+    ```
+
+    - The `+` means that anything inside the bracket is going to have multiple notable occurances.
+    - A period is declared with a backslash because it is outside the square brackets. `\.`
+    - To limit the occurances use `{}`. eg: `{2,}` means two or more occurances. 
+    - The hyphen `-` has a special meaning. And meaning is a range. So if we are not using hyphen as a range, it needs to come as the last character to let the compiler know that we are not using hyphen as a range, but as a symbol, as an acceptable character. that's why `[+-%]` is invalid and `[+%-]` is valid regexp.
+
+- Regular expressions allow capturing parts of the matched strings using parentheses. Parentheses create capturing groups which allow us to extract parts of the complete matched string.
+
+- Regex to capture dates
+    ```go
+    re := regex.MustCompile(`(\d{4})-(\d{2})-(\d{2})`)
+    ```
+
+- There are many regular expression generators online for such tasks.
+
+- We can also replace characters in our target string.
+
+- Flags and Options:
+    - `i` -> case insensitive. we are accepting characters in all cases.
+    - `m` -> multi-line model.
+    - `s` -> dot matches all
+
+- `?i` -> Flag which makes the regular expression case insensitive. WHen we are using Flags we need to make sure that those flags start with a question mark. This is how regular expressions accept flags.
+
+- When using regular expressions, be careful about complex patterns or large input strings, because regular expressions sometimes take up a lot of processing power and they can impact the overall performance of our application or API in a way that we didn't even anticipate.
+
+- So benchmark your regular expression pattern if performance is critical.
+
 
 
 ## Time
