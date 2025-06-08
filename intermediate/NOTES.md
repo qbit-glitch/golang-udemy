@@ -865,6 +865,12 @@
 
 ## Time Formatting / Parsing
 
+- Time Formatting and Parsing are crucial for converting time values between human readable formats and machine friendly representations like Unix timestamps. In Go, the time package provides robust support for these operations offering a variety of layout patterns to format time and methods to parse time strings into time.Time objects.
+
+- Some consideration when using time is that always consider time zones when formatting and parsing time to avoid discrepancies. Because we live in an age where our applications are accessed from many countries accross the globe and each country has it's own different time zone and we want the time to be shown to each user depending on their location. So always consider time-zone when you are making your application.
+
+- Handle errors returned by time.Parse() when parsing time strings to ensure robustness.
+
 
 
 
