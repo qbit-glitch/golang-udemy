@@ -952,6 +952,26 @@
 
 ## URL Parsing
 
+- URL parsing in Go involves extracting various components like scheme, host path, query parameters, etc from a URL string. This is crucial for tasks like building web applications, API endpoints, or processing URLs in general.
+
+- A URL which is acronym for Uniform Resource Locator has the following structure :
+    ```txt
+    [scheme://][userinfo@]host[:port][/path][?query][#fragment]
+    ```
+- `scheme` is also called the protocol. The protocol can be http, https, ftp.
+
+- `userinfo` contains username and password which is optional. 
+- Next we have `host` which is the domain name or the IP address.
+- After that we have a `port` number which is optional.
+- After the port we have `path`, path to the resource on the server.
+- next to that we have `query` parameters. Query parameters are in key value pairs.
+- Next we have `fragment` identifier. These are optional and used for specifying a location withing the resource.
+
+- Go's standard library `net/url` provides a comprehensice package for parsing URLs and manipulating their components.
+
+- In Programming, Parsing means we are processing some data and we are manipulating or we are extracting something out of that data. We make different methods using parse and they all do different things.
+
+- In conclusion, `net/url` package is essential for extracting and manipulating various components of URLs and understanding how to parse, build and handle URLs ensures robust handling of web related tasks in Go applications.
 
 
 ## `bufio` package
