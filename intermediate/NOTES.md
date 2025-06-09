@@ -931,6 +931,23 @@
 
 ## Intermediate Quiz 2
 
+<img src="./assets/quiz2/q1.png" width="600">
+<br/>
+
+
+<img src="./assets/quiz2/q2.png" width="600">
+<br/>
+
+<img src="./assets/quiz2/q3.png" width="600">
+<br/>
+
+<img src="./assets/quiz2/q4.png" width="600">
+<br/>
+
+<img src="./assets/quiz2/q5.png" width="600">
+<br/>
+
+
 
 
 ## URL Parsing
