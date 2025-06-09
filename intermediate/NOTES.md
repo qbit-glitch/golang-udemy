@@ -910,6 +910,23 @@
 
 ## Number Parsing
 
+- Number parsing is the process of converting textual representations of numbers into their corresponding number values.
+
+- In Go, Number Parsing is typically done using functions from the string conversion package for basic types and specialized functions for specific needs. The string conversion package is denoted by `strconv`.
+
+- `strconv.ParseInt()` -> converts a string to an integer with specified base and bit size. Takes 3 argument : string, base, bitSize
+
+- `strconv.Atoi()` -> it converts to an integer and that integer is of type int.
+
+- But let's way if we want an integer of a specific size, maybe int64, so in that case we are going to use strconv.PaseInt().
+
+- `strconv.ParseFloat()` -> takes 2 arguments: string, bitSize.
+
+- When working with parsing, always be careful about handling errors because maybe we actually pass incorrect values.
+
+- In conclusion number parsing in Go is essential for converting textual representations of numbers into usable numeric values in applications. The `strconv` package provides robust functions for parsing integers and floating point numbers with various bases and error handling capabilities. And understanding these functions and their usage ensures reliable handling of numeric input in our Go program.
+
+
 
 
 ## Intermediate Quiz 2
