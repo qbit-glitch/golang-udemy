@@ -1173,6 +1173,46 @@
 ## SHA256 / 512 Hashes / Hashing / Cryptography
 
 
+### Hashing
+
+- Hashing is a process used in computing to transform data into a fixed size string of characters, which typically appears random, and this transformation is done using a special algorithm called a hash function.
+
+- Key Components
+    - Deterministic
+    - Fast Computation
+    - Pre-Image Resistance
+    - Collision Resistance
+    - SHA-256
+    - SHA-512
+    - Salting
+
+- Best Practices
+    - Use of Standard Libraries
+    - Algorithm Updates
+
+- Hashing results in a unique output. So that means even a small change in the input will produce a completely different hash. This property is known as the `avanlanche effect`.
+
+- Salting adds an extra layer of security by combining the password with a unique random value so that it can be random, or you can store a string as a salt and use that with every password that you are hashing. The practice of salting helps you protect against dictionary attacks and rainbow table attacks. So, salt is a value added to the password before hashing and it's purpose is that it ensures that even if two users have the same password, their hashed values will be different due to different salts. 
+
+- So what happens is we are going to generate a random byte slice and then we are going to store that in our database with the user information in the salt column and in the password hash column we are going to store the hashed password. Now that hashed password has been hashed using the password as well as the salt string.
+
+- `io.ReadFull()` is a function from io package and it will read exactly the length of the byte slice from the give reader into the salt slice.
+
+    ```go
+    salt := make([]byte, 16)
+    _, err := io.ReadFull(rand.Reader, salt)
+    if err != nil {
+        return nil, error
+    }
+    return salt, err
+    ```
+
+    - `rand.Reader()` -> generates cryptographically secure random numbers. 
+    - So, its going to read the cryptographic random numbers equal to the length of salt slice which is 16.
+
+- Cryptographically secure random numbers are different from the general random numbers because these numbers are generated in a way that makes them unpredictable and resistant to reverse engineering. General random numbers however are predictable if enough information about the internal state is known. For example, a common pseudo random number generator might have patterns or weaknesses that make it less secure. However in case of cryptographically secure random numbers, the algorithms used to generate these ensures that even if part of the data is known, predicting the rest is computationally infeasible.
+
+
 
 
 ## Writing Files
