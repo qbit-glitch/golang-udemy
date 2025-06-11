@@ -1114,6 +1114,60 @@
 
 ## Base64 Coding
 
+- Encoding is essentially the methode used to translate data from it's orignal format into a specific format that can be used by other systems, applications or protocols. This translation allows for data to be correctly interpreted and utilized accross different environments. So, in simpler terms what encoding means is the process of converting data from one format to another so it can be stored, transmitter or processed effectively.
+
+- Encoding is used for data storage, different systems might use different formats for storing data. Encoding ensures that data can be correctly stored and retrieved.
+
+- Encoding is also important for data transmission. Data sent over networks or between different systems must often be encoded to ensure that it is transmitted correctly and can be understood by the receiving system.
+
+- Encoding is also important in terms of data interoperability. Encoding helps in ensuring that the data can be understood and processed by various systems or software regardless of their internal data formats.
+
+- Why Base64 ?
+    - text transmission
+    - storage
+    - urls and data urls
+
+- Why is Encoding Important ?
+    - Data storage
+    - Data transmission
+    - Data interoperability
+
+- Common examples of encoding
+    - Text encoding
+        - ASCII
+        - utf8
+        - utf16
+    - Data Encoding
+        - Base64 : method for encoding binary data into a text format. Commonly used in email and url encoding.
+        - URL encoding : converts characters into a format that can be transmitted over the internet. eg: spaces are encoded as `%20`
+    - File encoding
+        - binary encoding : data is encoded in binary format which is suitable for files such as images or executable files.
+        - text encoding : converts text into a specific format such as utf8 for use in text files.
+
+- Base64 is a binary to text encoding scheme that converts binary data into a textual representation using a set of 64 ASCII characters. It is commonly used for transmitting binary data over text based protocols such as emails or storing binary data as text in databases or files, so the encoding process of base64 involves converting binary into a textual format using a fixed set of 64 characters and these 64 characters comprise of uppercase, lowercase, digits from 0 to 9, plus sign and forward slash and optionally an equal sign as well.
+
+- Equal sign is used for padding at the end of the encoded data. 
+
+- Base64 enables binary data to be stored as text in databases or files that do not support binary formats. Apart from that, Base64 encoding is used in URLs, especially url safe variants and in data urls for embedding small resources directly into HTML or CSS.
+
+- Apart from that Base64 is used for text transmission as well, which allows binary data to be transmitted as text, which is useful for protocols that only support text data and in Go language, we use Base64 by utilizing the encoding base64 package.
+
+- Usually URLs may require special handling due to characters like forward slash and plus symbol being used in standard base64 encoding. So how do we make an encoded value URL safe ? So when we are trying to generate a URL safe encoding we are trying to avoid the forward slash and plus sign.
+
+- So base64 encoding is useful in embedding small images or files directly into html or css using data urls. And similarly, we can also store binary data in text based formats such as JSON, XML and while using base64 encoding there are some security considerations that we need to be careful about. 
+
+- Use Cases:
+    - Binary Data transfer
+    - Data Storage
+    - Embedding Resources
+
+- Security Considerations
+    - It is not Encryption
+    - Proper handling of padding
+    - Use appropriate variants.
+
+- Base64 encoding is a reversible encoding scheme and we need to ensure proper handling of padding. We should use appropriate variants of encoding. If we need standard encoding and we are okay with the special symbols, then we should use the standard encoding. Otherwise if we want an encoding that is URL safe, then we use URL encoding and it is based on the context that is standard versus URL safe.
+
 
 
 ## SHA256 / 512 Hashes / Hashing / Cryptography
