@@ -1217,6 +1217,40 @@
 
 ## Writing Files
 
+- Writing to files involves creating or opening a file, writing data to it and handling any errors that may occur during these operations.
+
+- We have `os` packages that provide convenient methods for handling file operations.
+
+- The os package in Go provides functions for operating system functionality including file operations. We have functions like create that will create or truncate a file with the given name and returns a file descriptor or the created file.
+
+- OpenFile method -> opens a file with the specified name, flags and permissions and it's also going to return a descriptor.
+
+- Write() -> method of file struct os.FileStruct().
+
+- Key Components :
+    - `os` package functions :
+        - Create(name string) (*File, error)
+        - OpenFile(name string, flag int, perm FileMode) (*File, error) 
+        - Write(b []byte) (n int, err error)
+        - WriteString (s string) (n int, err error)
+
+- Best Practices 
+    - Error Handling
+    - Deferred Closing
+    - Permissions
+    - Buffering
+
+- We can use `defer` for cleanup actions and closing a file, closing a database, closing connections are cleanup actions.
+
+- Best practices:
+    - error handling
+    - deferred closing
+    - permissions
+    - buffering
+
+
+
+
 
 
 ## Reading Files
