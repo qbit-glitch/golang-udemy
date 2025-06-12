@@ -1293,9 +1293,44 @@
 
 ## File Paths
 
+- Absolute path specifies the complete path from the root directory.
+
+- Relative path specifies the path relative to the current working directory.
+
+- Go provides `path/filepath` package for working with File Paths which handles platform specific path issues and provides utilities for path manipulation.
+
+- Some useful functions:
+    - filepath.Join() -> contructs a path by joining individual components with the appropriate seperator.
+    - filepath.Split() -> splits the path into directory and file name components.
+    - filepath.Clean() -> normalizes a path, cleaning up redundant separators and resolving dot and double references.
+    - filepath.Abs() -> returns the absolute path of a given relative path. 
+    - filepath.Base() -> retrieves the last element of the path which is the file or maybe a directory name.
+    - filepath.Dir() -> retrieves the directory part of the path.
+
+- we can use `os` package to make directories.
+
+- filepath offers us platform independence. So when we use filepath package functions it ensures portability accross different operating systems.
+
+- When it comes to filepath or url paths, always validate and sanitize user provided file paths to avoid security vulnerabilities such as directory traversal attacks and we sanitize our user input by trimming unwanted symbols or unwanted characters from that user input.
+
+- Best Practices
+    - Platform Independence
+    - Handling Errors
+    - Security
+
+- Practical Applications
+    - File I/O operations
+    - Directory Navigation
+    - Path Normalization
+
+- In conclusion, file paths in Go provide a standardized way to reference files and directories accross various operating systems.
 
 
 ## Directories
+
+
+
+
 
 
 
