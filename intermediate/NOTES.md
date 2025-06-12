@@ -1328,10 +1328,33 @@
 
 ## Directories
 
+- Directories or folders are containers used to organize files on computer's file system. In software development, understanding how to work with directories programmatically is essential for tasks such as creating, reading, navigating and deleting directories.
 
+- In Go, the `os` package provides functions for interacting with directories and performing file system operations.
 
+- Key Concepts:
+    - `os.Mkdir`
+    - `os.MkdirAll`
+    - `os.ReadDir`
+    - `os.Chdir`
+    - `os.Remove`
+    - `os.RemoveAll`
 
+- second argument of os.Mkdir is permission and  permissions are of type os.FileMode so they are in a numerical format. In Linux, the numerical format of a file that I own is 0755.
 
+- WalkDir is often preferred for performance reasons as compared to Walk() because WalkDir avoids some internal allocations by working directly with directory entities. WalkDir uses os.DirEntries under the hood which is more efficient while filepath.Walk() uses os.FileInfo which provides more details but may be less efficient.
+
+- Best Practices
+    - Error Handling
+    - Permissions
+    - Cross Platform Compatibility
+
+- Practical Algorithms
+    - Organizing files
+    - File System Navigation
+    - Batch Processing
+
+- We use these directory operations in many practical applications like organizing files, creating and managing structures file systems and also for the file system navigation meaning navigating to directories to access specific files or directories and also for batch processing, like performing operations on multiple files withing directories.
 
 
 
