@@ -1268,12 +1268,26 @@
 - Reading files in Go involves opening a file, reading it's content using methods such as reading byte slices or lines and handling errors effectively. Go's `os` and `bufio` packages provide efficient and straightforward APIs for file input output operations, making it easy to work with file data in various applications.
 
 
-
-
-
-
-
 ## Line Filters
+
+- Line filtering refers to the process of processing or modifying lines of text based on specific criteria. It involves reading text line by line and applying certain operations or conditions to each line. This is a common task in text processing, data cleaning and file manipulation.
+
+- Some examples of line filtering are filtering lines based on content that means we only print lines that contain a specific keyword. Another example is removing empty lines, so we can exclude blank or empty lines from the output. We can also tranform the line content. We can convert all text in lines to uppercase or lowercase and we can also apply filters lines by any criteria.
+
+- Some best practices
+    - Use buffered input output for efficient reading of input especially when dealing with large volumes of data.
+    - 
+
+- Best Practices
+    - Efficiency
+    - Error Handling
+    - Input Sources
+    - Flexibility
+
+- Practical Applications
+    - Data Transformation
+    - Text Processing
+    - Data Analysis
 
 
 
