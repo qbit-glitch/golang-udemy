@@ -1249,11 +1249,27 @@
     - buffering
 
 
-
-
-
-
 ## Reading Files
+
+- Reading Files is a common operation in programming for tasks such as configuration loading, data parsing, or processing large datasets.
+
+- `os` package is useed for file operations including files.
+
+- to create a scanner to read the file line by line use the `bufio` package.
+
+- ALong with the newline character we also have the EOF character. There's no way to go after the EOF.
+
+- Scanner reads from a file and if we want to read a file line by line we use scanner.Scan(). It loops over tokens and those tokens are lines. It keeps on overwritting the text with the new line that it scans and we are saving th output of scanner.Text() into a line variable and we print that afterwards.
+
+- EOF is signified by absence of data. So if there's no more data, that means that's the end of file.
+
+- make sure that you always check errors returned by file operations like os.Open, file.Read, scanner.Error.
+
+- Reading files in Go involves opening a file, reading it's content using methods such as reading byte slices or lines and handling errors effectively. Go's `os` and `bufio` packages provide efficient and straightforward APIs for file input output operations, making it easy to work with file data in various applications.
+
+
+
+
 
 
 
