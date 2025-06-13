@@ -1487,7 +1487,30 @@
 
 
 
+
+
+
+
+
 ## Environment Variables
+
+- Environment vairables are key value pairs that are part of the environment in which a process runs. They provide a convenient way to pass configuration information, credentials and other runtime parameters to applications without hard coding those values into the application itself.
+
+- In Go, environment variables are accessed through the `os` package.
+
+
+
+
+- Best Practices
+    - Security
+    - Consistency : Use All Caps for configuring the key for any environment variable.
+    - Documentation
+
+- Considerations
+    - Cross Platform Compatibility
+    - Default Values
+
+- Overall environment variables in Go provide a flexible and secure way to configure applications without hardcoding sensitive information.
 
 
 
