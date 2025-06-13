@@ -1385,11 +1385,47 @@
 
 
 
-
-
-
 ## Embed Directive
 
+- Embed Directive is a feature introduced in Go 1.16 to embed static files or directories into GO binaries at build time. This directive provide a convenient and efficient way to include assets directly withing your Go programs eliminating the need to manage these assets separately. 
+
+- The reason we use embed directive is for simplicity. Embedding files simplifies deployment as it reduces the number od separate files to manage. And also for efficicieny. Embedding files into binaries makes distribution and execution straightforwards without worrying about file paths or external dependencies because all our dependencies, all our assets, all the extra files that we needed are combined into our executable.
+
+- Embedded files are bundled within the binary, reducing exposure to external manipulation or unauthorized access.
+
+- The embed directive support files, the individual files that we have and their directories. Entire directories and their contents can be embedded recursively. And that means that we can embed almost anything into our executables.
+
+- To embed a directory, it's a little different in Go, we have to use special comments. Go Embed directive should be before a var declaration. 
+    ```go
+    import  _ "embed"
+    
+    //go:embed example.txt
+    var content string
+    ```
+
+- We are importing `embed` package only for the sole purpose of using it's side effects. The underscore before the embed tells the compiler that it's okay, we are using the embed package for it's side effects and we are not importing it to use any of it's assosciated functions, any of it's exported names. Technically this is called a `blank import`. A lank import prevents the compiler from complaining about an unused import.
+
+- When we are embedding a folder, we need to specify the type of the variable that succeeds the embed directory of the folder as `embed.FS`.
+
+- embed offers us a read only file system and that's why we can use our `embed.FS` in place of `fs.FS`. One advantage of using `fs` package is that, it is cross platform compatible.
+
+- The embed directive finds it's use in web-servers for embedding static html, css and javascript files for serving web content and also in configuration files. Embedding configuration files or templates directly into CLI tools or services.
+
+- Supported Types:
+    - Files
+    - Directories
+
+- Use Cases:
+    - Web Servers
+    - Configuration files
+    - Testing
+
+- Considerations
+    - File Size
+    - Update Strategy
+    - Compatibility
+
+- Embedded files cannot be modified at runtime and we may need to rebuild the binary for any updates.
 
 
 
