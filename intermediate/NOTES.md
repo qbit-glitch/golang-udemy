@@ -1457,6 +1457,11 @@
 
 - The flag package provides a convenient way to define and parse command line flags in Go program. Flags are parameters preceded by a hyphen, a single hyphen or a double hyphen that modify the behaviour of the program.
 
+- use `equal to` sign(=) for entering values for the subcommand.
+
+- `--help` will only list the commands and not the subcommands. This is the default nature of --help.
+
+
 - Key Concepts:
     - `os.Args` slice
     - Parsing Arguments
