@@ -1447,13 +1447,35 @@
 <br/>
 
 
-
-
-
-
-
 ## Command Line Arguments / Flags
 
+- Command Line arguments are a common way to pass parameters to a program when it is executed from a terminal or command prompt. 
+
+- In Go, handling command line arguments is straightforward, leveraging the OS package for accessing arguments and flags. In Go, the command line arguments are accessible via the `os.Args` slice, where `os.Args[0]` is the name of the command or the name of the program itself. After zero we have 1, 2, 3. So the subsequent numvers will contain the actual arguments passed to the program.
+
+- While `os.Args` provides raw access to command line arguments, more complex argument parsing can be achieved using packages like `flag` or manually processing `os.Args`.
+
+- The flag package provides a convenient way to define and parse command line flags in Go program. Flags are parameters preceded by a hyphen, a single hyphen or a double hyphen that modify the behaviour of the program.
+
+- Key Concepts:
+    - `os.Args` slice
+    - Parsing Arguments
+    - `flag` package
+    - Default Values and Usage
+
+- Considerations
+    - Order of Arguments
+    - Flag Reuse
+    - Order of Flags
+    - Default Values
+    - Help Output
+
+- Best Practices
+    - Clear Documentation
+    - Consistent Naming
+    - Validation
+
+- Whenever we are accepting user input, always anitize the user input before using it in your program.
 
 
 ## Command Line Sub Commands
