@@ -1573,10 +1573,24 @@
 
 
 
-
-
-
 ## Struct Tags
+
+-  Struct tags play a crucial role in controlling how data is encoded and decoded in Go, especially when working with JSON. They allow us to specify details about how struct fields should be represented in JSON, providing more flexibility and control.
+
+- Struct tags can be used to map struct field names to specific JSON keys, which might not match the Go field names, and this is useful when working with APIs pr data sources where the JSON keys hace different naming conventions.
+
+- Struct tags can also indicate that certain fields should be omitted from the JSON output either when they have zero values, or always omitting zero values, we use `omitempty` and for always omitting that field we use `-`.
+
+- We can also rename struct fields in the JSON output using struct tags. This is useful for ensuring the JSON output meets specific schema requirements, and schema is very important when we are storing data into a database or accessing data from a database.
+
+- Struct tags allow you to control the behavior of the encoding JSON package, such as specifying is a field should be ignored or how it should be serialized.
+
+- Having no value is equivalent to having zero value of that type. And having zero value is equivalent to having no value.
+
+- Struct tags in Go provide a powerful way to control how JSON data is encoded and decoded. They allow you to map struct fields to specific JSON keys and they also allow you to omit fields with zero values or omit fields entirely. 
+
+- By using struct tags effectively we can ensure that our Go applications produce and consume JSON data that meets our requirements and integrates smoothly with external systems and APIs.
+
 
 
 
