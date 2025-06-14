@@ -1516,6 +1516,28 @@
 
 ## Logging
 
+- Logging is a critical aspect of software development and operations as it allows developers and system administrators to monitor and debug applications.
+
+- In Go, logging is straightforward and the standard library provides robust support through the log package. The standard log package doesn't have built in support for logging levels like debug, info, warn, error. However, we can create custom logging functions to handle different levels.
+
+
+
+
+- JSON is a widely used format for data interchange, making it easy to integrate with other systems and services that expect log data in JSON format.
+
+- JSONFormatter improves readability for developers and operators who prefer structured data. JSON logs can be more readable and easier to understand than plain text logs, especially when logs contain complex data.
+
+- Adding context to logs can be very useful for tracking the flow of requests and debugging.
+
+- Best Practices
+    - Always use Log Levels
+    - Structured Logging
+    - Contextual Information
+    - Implement Log Rotation : to manage log file sizes and prevent disk space issues.
+    - External Services
+
+- Log Rotation is a technique used to manage the size of log files by periodically rotating them out and starting new ones. This helps prevent log files from growing indefinitely and consuming all available disk space. Implementing log rotation ensures that old log data is archived, deleted or compressed making it easier to manage logs and maintain system performance.
+
 
 
 ## JSON
