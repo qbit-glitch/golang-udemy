@@ -1542,6 +1542,37 @@
 
 ## JSON
 
+- JSON which stands for Javascript Object Notation, is a lightweight data interchange format that is easy for humans to read and write, and easy for machines to parse and generate. It is commonly used for transmitting data in web applications.
+
+- In Go, the `encoding/json` package provides functions to encode which is called Marshall and decode, which is unmarshal json data.
+
+- `json.Marshal()` -> convert Go data structures into JSON (encoding)
+
+- `json.Unmarshal()` -> convert JSON into Go data structures (decoding)
+
+- Backticks in structs are primarily used for struct field tags which provide metadata about the fields. These tags are especially useful when you need to convert a struct to JSON or interact with databases.
+
+- In Go structs, each field has a tag specifying the JSON key to use when the struct is marshalled to JSON. So what we are doing is we are mentioning the field that needs to be there when this struct is changed into a JSON.
+
+- Struct tags can be used for tags that can specify column names or primary keys, etc., when using database ORM (Object Relation Management). Tags can also provide validation rules for example in making APIs. We can use `db` instead `json` tags when working with databases and in that case the tags will represent the column names in the database.
+
+- Similar to structs, JSON objects can also be nested inside each other.
+
+- `encoding/json` package handles the encoding and decoding of arrays and slices as well.
+
+- Best Practices
+    - Use JSON Tags
+        - Mapping Struct Fields to JSON keys
+        - Omitting Fields - if empty (`omitkey`) or always (`-`)
+        - Renaming Fields
+        - Controlling JSON encoding / decoding behaviour.
+    - Validate JSON
+    - Use `omitempty`
+    - Handle Error
+    - Custom Marshalling / Unmarshalling
+
+
+
 
 
 
