@@ -1592,9 +1592,27 @@
 - By using struct tags effectively we can ensure that our Go applications produce and consume JSON data that meets our requirements and integrates smoothly with external systems and APIs.
 
 
-
-
 ## XML
+
+- XML stands for extensible markup lanaguage, is a markup language used for encoding documents in a format that is both human readable and machine readable. It is widely used for data interchange between systems and for configuration files.
+
+- Best Practices
+    - Use XML Tags
+    - Validate XML
+    - Handle Nested Structures
+    - Handle Errors
+    - Custom Mashalling/Unmarshalling
+- Real World Scenarios
+    - Web Services and APIs
+        - Spring Framework
+        - Microsoft .NET Applications
+    - Data Interchange and Storage
+        - RSS and Atom Feeds
+        - Electronic Data Interchange(EDI)
+    - Industry Standards
+        - Health Care (HL7)
+        - Finance (FIXML)
+
 
 
 
