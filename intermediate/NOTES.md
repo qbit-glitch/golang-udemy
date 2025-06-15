@@ -1790,3 +1790,18 @@
 
 
 ## Intermediate Quiz 4
+
+<img src="./assets/quiz4/q1.png" alt="Quiz Question" width="650">
+<br/>
+
+<img src="./assets/quiz4/q2.png" alt="Quiz Question" width="650">
+<br/>
+
+<img src="./assets/quiz4/q3.png" alt="Quiz Question" width="650">
+<br/>
+
+<img src="./assets/quiz4/q4.png" alt="Quiz Question" width="650">
+<br/>
+
+<img src="./assets/quiz4/q5.png" alt="Quiz Question" width="650">
+<br/>
