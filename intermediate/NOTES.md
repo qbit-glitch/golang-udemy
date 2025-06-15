@@ -1629,6 +1629,37 @@
 
 ## IO Package
 
+- Why is the io package important ?
+    - It facilitates interaction with various data sources (files, networks, in-memory buffers).
+    - Provides a consistent interface for handling I/O operations.
+
+- Core Interfaces:
+    - io.Reader
+    - io.Writer
+    - io.Closer
+
+- Common types and functions
+    - io.Reader
+    - io.Writer
+    - io.Copy()
+    - io.MultiReader()
+    - io.Pipe()
+
+- Working with Buffers
+    - bytes.Buffer
+    - bufio.Package
+
+- `io.Pipe()` creates a pipe with a connected io.Reader and io.Writer. So essentially what it does is, it returns us two values. One value will be a reader and another value will be writer. It's not a common value of Reader and Writer, there are two different return values from io.Pipe and we can use these return values, the Reader and the Writer to read and write data. And these are both connected.
+
+- Go routines are essentially any immediate function (Immediate functions are the functions that are executed immediately once they are defined). If we add `go` keyword before a function, it becomes go routine. And Go routines are functions that are immediately executed and they are anonymous.
+
+- The `go` keyword -> It extracts this function out of the main thread and the execution will fall on to the next line. And this function, once it is completed, then it will come back to the main thread.
+
+- A pipe is a way to connect two pieces of code so that data can flow from one to the other. It's like a tunnel through which information travels. In Go the io.Pipe() creates a pipe with two ends. The Reader end is the end from which data will be read and Writer is the end to which data will be written. Reading will be don from the reading end of the pipe.
+
+- io vs bufio :
+    <img src="./assets/io_vs_bufio.png" alt="io vs bufio package" width="600">
+
 
 
 
