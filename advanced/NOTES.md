@@ -64,11 +64,73 @@
 - Handling Errors in Goroutine through a concept called error propagation. So goroutines execute functions concurrently and in that case errors need to be communicated back to the main thread, so use return values or shared error variables if not using channels. So if we are not using channels we can use shared error variable.
 
 
-
-
-
-
 ## Channels - Introductions
+
+- Channels and Goroutines go hand in hand.
+- Channels are a ways for goroutines to communicate with each other and synchronize their execution. They provide a means to send and receive values between Goroutines, facilitating data exchange and coordination.
+
+- We use channels to enable safe and efficient communication between concurrent goroutines. Using channels hels synchronize and manage the flow of data in concurrent programs.
+
+- Why use channels ?
+    - Enable safea and efficient communication between concurrent Goroutines.
+    - Help synchronize and manage the flow of data in concurrent programs.
+
+- Basics of Channels
+    - Creaing channels : `make(chan Type)`
+    - Sending and Receiving Data `<-`
+    - Channels Directions
+        - Send-only: `ch <- value`
+        - Receive-only: `value := <- ch`
+
+- Common Pitfalls and Best Practices
+    - Avoid Deadlocks
+    - Avoiding Unnecessary Buffering
+    - Channel Direction
+    - Graceful Shutdown
+    - Use `defer` for unlocking
+
+- Concept:
+    ```go
+    // variable = make(chan Type)
+	greeting := make(chan string)
+	greetString := "Hello Go"
+
+	greeting <- greetString
+
+	receiver := <- greeting
+	fmt.Println(receiver)
+    ```
+
+    - Issue with this code is that it tries to send a value to a channel without having a Goroutine ready. A goroutine should be there to receive from that channel and without a goroutine to receive from the channel, it cause deadlock because channels in Go are blocking. 
+
+    - Goroutines are non-blocking. They are extracted away from the main thread, the main execution thread of our application where the main function is running and will continue to run seamlessly in a non-blocking way if we have goroutine.
+
+    - If we have a function here, then that function , if it is not declared with a Go keyword, it will block the execution of the rest of the statements after that function until the time that function is complete. But if we use a go keyword that function is extracted out of main thread, and then the next statements will continue to run before that function is even processed.
+
+    - Similarly, like a function that blocks the execution flow of our main function, a channel will also block the execution of our main function of our main thread.
+
+    - So that's why we need to receive values into a channel inside a goroutine so that it doesn't block the main execution thread. 
+
+    - Correct Code:
+        ```go
+        // variable = make(chan Type)
+        greeting := make(chan string)
+        greetString := "Hello Go"
+        go func(){
+            greeting <- greetString
+        }()
+        receiver := <- greeting
+        fmt.Println(receiver)
+        ```
+
+    - Here `receiver` is receiving outside of the goroutine in the main funciton, so why is it not blocking the execution ? 
+        - Because `receiver` is part of the main goroutine. The main execution thread is a goroutine because it is running continuosly and it is the main funcition of our application.
+        - So receiver is also a part of a go routine and that's how this channel is communicating the goroutine and the main goroutine. So receiver is not just an independent receiver, it is a receiver inside another go routine. And that makes the `greeting` communicate between two go routines.
+
+    - Receiving from a channel is also blocking and if there is no value to receive, then it will wait for a value to be received and next line will not be executed until the time it receives a value.
+
+- 
+
 
 
 

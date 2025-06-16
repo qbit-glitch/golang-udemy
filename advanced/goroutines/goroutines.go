@@ -67,6 +67,6 @@ func doWork() error{
 	time.Sleep(1 * time.Second)
 
 	// simulate the error
-	return fmt.Errorf("Error while working.")
+	return fmt.Errorf("error while working")
 }
 
