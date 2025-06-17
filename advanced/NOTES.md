@@ -232,6 +232,24 @@
 
 ## Advanced: Quiz-1
 
+<img src="./assets/quiz1/q1.png" width="600" alt="Quiz-1">
+<br/>
+
+
+<img src="./assets/quiz1/q2.png" width="600" alt="Quiz-1">
+<br/>
+
+
+<img src="./assets/quiz1/q3.png" width="600" alt="Quiz-1">
+<br/>
+
+
+<img src="./assets/quiz1/q4.png" width="600" alt="Quiz-1">
+<br/>
+
+
+<img src="./assets/quiz1/q5.png" width="600" alt="Quiz-1">
+<br/>
 
 
 

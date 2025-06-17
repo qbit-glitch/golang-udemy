@@ -7,9 +7,9 @@ import (
 
 func main() {
 
-	// channelSyncFlagDemo1()
-	// channelSyncFlagDemo2()
-	// channelSyncMultipleGoRoutines()
+	channelSyncFlagDemo1()
+	channelSyncFlagDemo2()
+	channelSyncMultipleGoRoutines()
 	channelSyncDataExchange()
 
 }
@@ -79,7 +79,7 @@ func channelSyncDataExchange(){
 	data := make(chan string)
 	go func(){
 		for i := range 5{
-			data <- "Hello " + string('0'+i)
+			data <- "Hello " + string(rune('0'+i))
 			time.Sleep(100 * time.Millisecond)
 		}
 		close(data)
