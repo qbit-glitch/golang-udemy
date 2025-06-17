@@ -161,8 +161,47 @@
 - The default behavior for channels is that they allow for goroutines to finish, even if those go routines are not relevant to those channels.
 
 
-
 ## Buffered Channels
+
+-  Buffered channels allow channels to hold a limited number of values before blocking the sender. Buffered channels are useful for managing data flow and controlling concurrency. 
+
+- So buffer essentially means storage. We are allowing channels to store values. In unbuffered channels, channels cannot store values. They need an immediate outflow of the value that they receive. As soon as they have an incoming value, they need a receiver a receive the value because they cannot hold a value. However, buffered channels can hold values inside them. They do not require an immediate receiver. Due to this buffered our main function is not blocked and hence buffered channels offer us an asynchronous communication. 
+
+- Buffered channels allow senders to continue working without blocking until the buffer is full and they do not require an immediate receiver. They will only block when the buffer is full and they will only blocj when we are trying to insert more value, when we are trying to send more value inside the channel when it is already full. So the channel will not return an error or will not block as soon as it gets full. It will only block or return an error when we try to send more value.
+
+- Other than that, we also use buffered channels when we are handling burst of data without immediate synchronization. Immediate synchronization means that we are receiving values and sending values to a receiver immediately. But we don't need immediate synchronization because we are storing values inside a buffer.
+
+- If the buffer is empty we cannot receive data. So if we try to receive when the buffer is empty, then it should block our code instead of giving an error.
+
+- While sending data to a channel, it will implement a blocking mechanism when the buffer is full. That's for sending data into a buffered channel. 
+
+- And when we are receiving data into a buffered channel, we will encounter a blocking mechanism when the buffer is empty, when we are trying to receive values from a buffer which is empty.
+
+- Other than these two, buffer channels have non-blocking operations. They allow non-blocking sends and receives as long as the buffer is not full or empty.
+
+- Impact on Performance :
+    - Buffered channels can improve performance by reducing synchronization overhead and when it comes to unbuffered channels, they typically use strict synchronization where sender and receiver must be synchronized, they must be ready at the same time to send and receive values.
+
+- We should chose buffer size based on the expected volumes of data and concurrency requirements and that is because large buffers reduce the likelihood of blocking but increase memory usage, and smaller buffers increase the likelihood of blocking, but use less memory. 
+
+- Why use buffered channels ?
+    - Asynchronous Communication
+    - Load Balancing
+    - Flow Control
+
+- Creating Buffered Channels:
+    - `make(chan Type, capacity)`
+    - Buffer capacity
+
+- Key Concepts of Channel Buffering
+    - Blocking Behaviour
+    - Non-Blocking Operations
+    - Impact on Performance
+
+- Best Practices for using Buffered Channels
+    - Avoid over-buffering
+    - Graceful shutdown
+    - Monitoring buffer usage
 
 
 
