@@ -326,6 +326,29 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Non-Blocking channel operations
 
+- Why use Non-Blocking Operations:
+    - Avoid Deadlocks
+    - Improve Efficiency
+    - Enhance Concurrency
+
+- Best practices for Non-Blocking operations
+    - Avoid Busy waiting
+    - Handle channel closure properly
+    - Combine with contexts for cancellations
+    - Ensure channel capacity management
+
+- Non-Blocking operations on channels allow a goroutine to perform a channel operation like send or receive without getting stuck, if the channel is not ready. They help maintain responsiveness and prevent goroutines from getting blocked indefinitely.
+
+- Why do we need to use non-blocking operations ?
+    - To avoid deadlocks, prevent goroutines from waiting indefinitely on channel operations and a
+    - To improve efficiency i.e allow goroutines to continue processing or handle other tasks if channels are not immediately ready.
+    - Most importantly, to enhance concurrency. Manage multiple concurrent operations more effectively by not blocking on individual channel operations.
+
+- The select statement with a default case allows for non-blocking receives by immediately executing the default case if no other channels are ready.
+
+- We use non-blocking operations to handle real-time data processing where timely responses are critical.
+
+- Another non-blocking operation is handling channel closures. Channels do send out an `ok` a boolean value to let us know if the channel is open or closed.
 
 
 
