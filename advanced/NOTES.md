@@ -355,6 +355,46 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Closing Channels
 
+- Why close channels ?
+    - Signal Completion 
+    - Prevent Resource Leaks
+
+- Best Practices for Closing channels:
+    - Close channels only from the sender
+    - avoid closing channels more than once
+    - avoid closing channels from multiple goroutines
+
+- Common patterns for closing channels
+    - Pipeline pattern
+    - Worker Pool pattern
+
+- Debugging and Troubleshooting Channel Closures
+    - Identify Closing channels errors
+    - USe `sync.WaitGroup` for coordination
+
+- Signal Completion: : It indicates that no more data will be sent on the channel, which helps goroutines that are receiving data know when to stop waiting.
+
+- Prevents Resource Leaks: Closing channels ensures that resources assosciated with the channel are properly cleaned up. 
+
+- For closing a channel we use the close function and after a channel is closed, no more values can be sent to it. However, we can receive values from a closed channel if it is a buffered channel. A buffered channel may have some values stored in it, and those values can be received even if the channel is closed because closing a channel means that the channel is closed for sending data into the channel, not for receiving values from a channel. We can always receive values from a channel if it has some values, if it is not empty.
+
+- Basic Principles / Guidelines rules :
+    - Close channels only from the sender. Do not close channel from the receiving end. Only the goroutine that is sending data should close the channel. Other goroutines that are receiving should only read from the channel.
+
+    - Sometimes we close a channel more than once and that results in a runtime panic. So always ensure that channels are closed exactly once.
+
+    - Similarly, we need to ensure to that only one goroutine is responsible for closing the channel to avoid race conditions and panics. We should not close a channel twice and we should not close channels from multiple goroutines because one goroutine might be sending data to the channel while the other goroutine closes the channel and if the channel is closed in between, and then the other goroutine is still trying to send data into the channel then that will again cause an error.
+
+- There are certain patterns for closing the channels like :
+    - Pipeline Pattern: Channels are used to pass data through a series of stages which are pipelines. Each stage closes the channel when it is done processing, so we are going to have a producer and a filter and these functions, which are producer and filter are going to close the channels respectively which they should.
+
+    - Worker Pool Pattern: dicussed in later lectures
+
+- SO now we need to know that whether it's a buffered channel or an unbuffered channel, every channel needs to be closed manually by us and a channel is closed by using the close function, and once a channel we cannot send any more values to that channel. And once a channel is closed, it sends out a value, a boolean value to the receiver and we can receive that value and check if the channel is open or closed and if the channel is closed, we can handle the closing channel gracefully in our program.
+
+
+
+
 
 
 
