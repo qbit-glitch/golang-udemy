@@ -522,9 +522,28 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Tickers
 
+- Ticker in Go is a mechanism for producing ticks at regular intervals. Tickers are useful for performing periodic tasks or operations on a consistent schedule. Tickers are often used in scenarios where the tasks need to be repeated at fixed intervals such as polling, periodic logging or regular updates.
 
+- Using tickers ensures operations at regularion intervals maintaining a consistent schedule. Using tickers also simplifies the implementation of recurring tasks without manually handling timing logic.
 
+- Ticker is created using `time.NewTicker()`, so we are using time package and with that we use NewTicker() with a specific time interval.
 
+- Similar to timers, tickers also have a channel associated. So when we create an instance of a ticker, it will have a `C` field of the ticker type, which is a channel that receives ticks at regular intervals.
+
+- Why use Tickers ?
+    - Consistency
+    - Simplicity
+
+- Best Practices for Using Tickers ?
+    - Stop Tickers when no longer needed
+    - Avoid Blocking Operations
+    - Handle Ticker Stopping Gracefully
+
+- Similar to timers, we have a `Stop()` method to stop a ticker. It is important to stop a ticker to release resources and prevent it from producing further ticks because ticker does not expire. Timers have an expiry but tickers don't.
+
+- A very common use for ticker is periodic task execution. We can use a ticker to execute tasks at regular intervals, such as polling data, updating status or performing routine maintenance.
+
+- There are many scenarios where we combine tickers with timers to create complex timing logic where certain tasks need to be performed periodically with timeouts or delays. Similarly we can handle multiple tickers as well.
 
 
 ## Worker Pools
