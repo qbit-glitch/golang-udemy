@@ -477,13 +477,46 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
     - Misusing context values.
 
 
-
-
-
-
 ## TImers
 
+- A timer in Go allows you to schedule an event to occur after a specified duration. It is useful for implementing timeouts, scheduling periodic tasks and delaying operations. 
 
+- One of the key reasons for using timers is timeouts. We can implement timeout functionality to limit how long a particular operation should wait.
+
+- Another reason would be to use delays in schedule operations to occur after a certain delay.
+
+- Other than that, we can define periodic tasks using timers. These tasks execute recurringly at regular intervals.
+
+- timer will send the current time on its channel after a specified duration. It sends the current time after a time duration.
+
+- `time.NewTimer()` is non-blocking in nature. `time.Sleep()` is blocking in nature.
+
+- Why use Timers :
+    - Timeouts
+    - Delays
+    - Periodic Tasks
+
+- The `time.Timer` type:
+    - Creating a Timer
+    - Timer Channel
+    - Stopping a Timer
+
+- Practical Use Cases for Timers:
+    - Implementing Timeouts
+    - Scheduling Delayed Operations
+    - Periodic Tasks
+    - Handle Large Numbers of Goroutines
+    - Use `defer` for Unlocking
+
+- Best Practices
+    - Avoid Resource Leaks
+    - Combine with channels
+    - Use  `time.After` for simple timeouts
+
+- Best Practices:
+    - Always remember to stop timers when they are no longer needed to avoid resource leaks and we should use `defer` to ensure proper cleanup. So we shall use defer `timer.Stop()` even if the timer has expired, we still need to stop the timer.
+
+    - It's important because we need to manage the lifecycle of a timer properly to ensure efficient resource usage. Stopping a timer helps in freeing up resources and avoiding unexpected behaviour. If you do not stop a timer and it is no longer needed, it will still consume resources. Although the timers channel will eventually be garbage collected, the timer itself will remain until it either fires or is stopped.
 
 
 
