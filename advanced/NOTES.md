@@ -414,6 +414,69 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Context
 
+- Context is a type from the `context` package.
+- COntexts are used to carry deadlines, cancellation signals and request scoped values.
+- Contexts are closely associated with APIs. When we are creating any kind of APIs be it gRPC API or a Rest API, contexts are frequently used and by default assosciated with creating APIs.
+
+- In the definition of context, we have a mention of request scoped values. It means that we are passing request scoped data accross API boundaries. And apart from passing request scoped data, we are also managing timeouts and deadlines for operations and we are handling cancellation of operations using context. But apart from that we are also carrying values in key-value pairs.
+
+- We create a context using `context.Background()` or `context.TODO()`.
+
+- A context in Go is an object that carries information about deadlines, cancellation signals and other request scoped values accross API boundaries and goroutines. Contexts are also used in goroutines to carry values, cancellation signals and many other things. It is used to manage the lifecycle of processes and to signal when the operations should be aborted. Some key features of contexts include cancellation signals, deadlines and timeouts and values. SO, In a very broader way, contexts are variables that store values in key value pairs.
+
+- `context.TODO()` is used when you are unsure about which context to use, or if you plan to use a proper context later. It just acts as a placeholder and it doesn't carry any deadlines, cancellations.
+
+- Code Explanation : 
+
+    ```go
+    ctx = context.Background()
+	ctx, cancel := context.WithTimeout(ctx, 2*time.Second)
+    defer cancel()
+    ```
+
+    - We create a context and then we give it a deadline using `WithTimeout` by giving a timeout value of 2 second. That means that this context will cancel after 1 second.
+    
+    - Context cancellation does not mean context will delete or context will cease to exist. Context cancellation means that it will send a cancellation signal. (that's it). After cancellation signal, it will retain all the data that it contains, but it will send a cancellation signal when we run cancel.
+
+    - Once the cancellation signal has been sent, `context.Done()` receives a channel struct which indicates a cancellation signal.
+
+- `context.Background()` is a way to signify a base or a root context from which other contexts can be derived. It does mean it's running in background nor it's a goroutine. It's simply a kind of variable but with more functionalities. `context.Background()` is intended to be the top level context. Usually it is created in the main function initialization or a top level request handlers. 
+
+- `context.Background()` has no deadlines, no cancellation and carries no values. context.Background and context.TODO, they don't carry values themselves. We can use these root context to then pass to `context.WithValue()`, `context.WithBackground()`, and then those functions are going to modify or are going to add some more features to the root context. But the root context itself cannot store values or have any deadline or cancellations. context.Background() is neutral and unintialized, making it a clean slate for creating contexts. The term background was chosen to imply that it's always available in the background of your application. It is ready to be used a foundation for other contexts. It's a context that doesn't do anything by itself, but it provides a baseline or backdrop for deriving more secific contexts.
+
+- Why use context ?
+    - Cancellation
+    - Timeouts
+    - Values
+
+- Basic Concepts
+    - Context Creation
+        - `context.Background()`
+        - `context.TODO()`
+    - Context hierarchy (How contexts are created and derived)
+        - `context.WithCancel()`
+        - `context.WithDeadline()`
+        - `context.WithTimeout()`
+        - `context.WithValue()`
+
+
+- Practical Uage
+    - Context Cancellation
+    - Timeouts and Dealines
+    - Context Values
+
+- Best Practices
+    - Avoid storing contexts in structs
+    - Propagating context correctly
+    - Handling context values
+    - Handling context cancellation
+    - Avoid creating contexts in Loops
+
+- Common Pitfalls:
+    - Ignoring Context Cancellations
+    - Misusing context values.
+
+
 
 
 
