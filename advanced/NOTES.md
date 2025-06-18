@@ -393,15 +393,22 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 - SO now we need to know that whether it's a buffered channel or an unbuffered channel, every channel needs to be closed manually by us and a channel is closed by using the close function, and once a channel we cannot send any more values to that channel. And once a channel is closed, it sends out a value, a boolean value to the receiver and we can receive that value and check if the channel is open or closed and if the channel is closed, we can handle the closing channel gracefully in our program.
 
 
-
-
-
-
-
-
 ## Advanced: Quiz-2
 
+<img src="./assets/quiz2/q1.png" width="600" alt="Quiz-2">
+<br/>
 
+<img src="./assets/quiz2/q2.png" width="600" alt="Quiz-2">
+<br/>
+
+<img src="./assets/quiz2/q3.png" width="600" alt="Quiz-2">
+<br/>
+
+<img src="./assets/quiz2/q4.png" width="600" alt="Quiz-2">
+<br/>
+
+<img src="./assets/quiz2/q5.png" width="600" alt="Quiz-2">
+<br/>
 
 
 
