@@ -781,6 +781,32 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Rate Limiting
 
+- Rate limiting is a technique used to control the amount of incoming or outgoing traffic to or from a system. It ensures that resources are not overwhelmed and that usage remains withing predefined limits. It is commonly used in web-servers, APIs and applications to prevent abuse, manage load and ensure fair usage.
+
+- Rate limiting is used to prevent overload, to protect our systems from being overwhelmed by too many requests or operations. Rate limiting ensures equitable distribution of resources among users or clients. It mitigate the risk of abuse or misuse of resources.
+
+- Why use rate limiting ?
+    - Prevent Overload
+    - Fairness
+    - Abuse Prevention
+    - Cost Management
+
+- Common Rate Limiting Algorithms:
+    - Token Bucket Algorithm: It uses a bucket to hold tokens that represent the ability to perform operations. These tokens are added at a fixed rate and operations can only be performed if tokens are available. It allows burst of traffic while maintaining a steady rate over time.
+
+    - Leaky Bucket Algorithm: Similar to the token bucket but with a fixed leak rate. Requests are added to the bucket and the bucket leaks at a constant rate. 
+        Key property - It smooths out burst of traffic to ensure a constant output rate.
+
+    - Fixed Window Counter: It counts requests within a fixed time window (example per minute, 15 sec, etc). If the count exceeds the limit, further requests are denied until the window resets. 
+        Key property - simple to implement but may allow for bursts at the window boundaries.
+
+    - Sliding Window Log: Keeps a log of request timestamps and enforces limits based on the number of requests in a sliding window of time.
+        Key property - It provides more precise rate limiting compared to fixed windows but it requires more memory.
+
+    - Sliding Window Counter: Combines fixed window and sliding window approaches. It maintains a counter for recent requests and adjusts the count based on sliding time windows.
+        Key property: It balances precision and memory usage.
+
+
 
 
 
