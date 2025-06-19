@@ -830,10 +830,38 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Rate Limiting - Fixed Window Counter
 
+- **Fixed Window Counter**
+    - How it works:
+        - Each window has a counter that tracks the number of requests.
+        - If the number of requests in the current window is below the limit, the request is allowed, and the counter is incremented.
+        - If the number of requests reaches the limit, subsequent requests in the same window are denied.
+        - At the start of a new window, the counter is reset.
+
+    - Key Points of Fixed Window Algorithms :
+        - Window Duration
+        - Request Counting
+        - Reset Mechanism
+
+- **Token Bucket Algorithm**
+    - How it works ?
+        - Tokens are added to the bucket at a fixed rate (refill rate).
+        - Each request consumes one token from the bucket.
+        - If the bucker has tokens, the request is allowed and a token is removed.
+        - If the bucket is empty, the request is denied.
+        - The bucket has a maximum capacity to limit the number of accumulated tokens.
 
 
+- Practical use cases for rate limiting:
+    - API Rate Limiting
+    - Traffic Shaping
+    - Preventing Abuse
+    - Load Management
 
-
+- Best Practices
+    - Choose the right algorithm
+    - Handle the edge cases
+    - Monitor and adjust
+    - Graceful handling of rate limits
 
 ## Rate Limiting - Leaky Bucket Algorithm
 
