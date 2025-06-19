@@ -584,13 +584,42 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 - Overall, worker pools in Go are a powerful tool for managing concurrent tasks processing, improving efficiency and optimizing resource utilization by understanding the key concepts, best practices and advanced patterns of worker pools, you can effectively implement and manage them in your go applications to handle large volumes of tasks concurrently.
 
 
-
-
-
-
 ## Wait Groups
 
+- Wait group is a synchronization primitive provided by the sync package in Go. It is used to wait for a collection of goroutines to complete their execution.
 
+- It means, we have another mechanism to wait for goroutines to finish other than using channels. The reason we use wait groups is for synchronization. We wait for multiple gorountines to finish before proceeding.
+
+- Wait groups also help us in coordination. Wait groups coordinate the completion of concurrent tasks, ensuring that all tasks are completed before moving on.
+
+- Wait groups also helps us with resource management. Wait groups manage resources and cleanup after concurrent operations. 
+
+- To create an instance of a wait group we use sync package and the actual function is `sync.WaitGroup()`.
+
+- `Add()` increments the wait group counter by the argument that we pass it. Typically it is used to indicate the number of goroutines to wait for. `Done()` decrements the counter by one. This method should be called inside each goroutine when it finished it's tasks. The `Wait()` blocks until the counter inside the wait group is decremented to zero.
+
+- Why use Wait Groups ?
+    - Synchronization
+    - Coordination
+    - Resource Management
+
+- Basic Operations
+    - Add(delta int)
+    - Done()
+    - Wait()
+
+- Quiet frequently in our daily work, we will combine `WaitGroups` with channels.
+
+- Best Practices:
+    - Avoid Blocking Calls inside goroutines
+    - Use `defer` to call `Done`
+    - Ensure Proper use of `Add`
+    - Handle Large Number of Goroutines
+    - Use `defer` for Unlocking
+
+- Common Pitfalls:
+    - Mismatch between `Add` and `Done`
+    - Avoid Creating deadlocks
 
 
 
