@@ -704,8 +704,78 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Atomic Counters
 
+- Why use Atomic Counters ?
+    - Performance
+    - Simplicity
+    - Concurrency
 
+- Atomic Operations in Go
+    - Window Duration
+    - Request Counting
+    - Reset Mechanism
 
+- `sync/atomic` package :
+    - `atomic.AddInt32` / `atomic.AddInt64` 
+    - `atomic.LoadInt32` / `atomic.LoadInt64`
+    - `atomic.StoreInt32` / `atomic.StoreInt64`
+    - `atomic.CompareAndSwapInt32` / `atomic.CompareAndSwapInt64`
+
+- An atomic counter is a type of counter used in concurrent programming to manage and track counts or values in a thread safe manner, without the need for explicit locking. It leverages atomic operations to ensure consistency and prevent race conditions.
+
+- Atomic Operations are often faster than using Mutexes due to lower overhead. Atomic Counters ensures that the counter updates are sade and consistent accross multiple goroutines.
+
+- Atomic counters are offered by the `sync/atomic` package in Go, which provides low level atomic operations for synchronizing access to shared variables. It offers functions to performing atomic operations on integers and pointers.
+
+- Atomic operations refers to operations that are indivisible and uninterruptible. This concept is crucial for ensuring safe, concurrent access to shared resources in a multithreaded environment.
+
+- Indivisible: atomic operation is one that completes in a single step relative to other threads or processes. It means that once the operation starts, it runs to completion without being interrupted or observed in an intermediate state by other threads. 
+
+- Uninterruptible: operation is performed without any possibility of interruption. Once being, it runs to completion without any other thread being able to observe or interfere with its intermediate state.
+
+- Goal is to increment counter many times from different goroutines without causing issues like data races.
+
+- Atomic Operations are special operations that are performed as a single indivisible step. They are crucial for safely handling shared data in concurrent programming. 
+
+- In Go, we are using `sync/atomic` package which provides functions to perform atomic operations.
+
+- Mechanism fo atomic counters is pretty much similar to mutexes. Mutexes had a locking and unlocking mechanism, and here we are free from locking and unlocking manually. Behind the scenes, atomic operations implement the same locking and unlocking mechanism at a lower level.
+
+- What does `Atomic` mean ?
+    - Indivisible
+    - Uninterruptible
+
+- Why use Atomic Operations ?
+    - Lost Updates
+    - Inconsistent Reads
+
+- How Atomic Operations Work ?
+    - Lock-Free 
+    - Memory Visibility
+
+- Issues without Atomic Operations :
+    - Data Race
+    - Inconsistent Results
+
+- A data race occurs when two or more goroutines access the same variable concurrently and at least one of those accesses is a write. Since there is no synchronization mechanism in place, the result of these concurrent operations is unpredictable. This unpredictability results in data risks and inconsistent results.
+
+ <img src="./assets/atomic_counters.png" width="650" alt="Atomic Counters">
+ <br/>
+
+- What might go wrong (without atomic counters):
+    - Incorrect Final Count
+    - Unpredictable Behaviour
+    - Possible Crashes or Corruption
+
+- Best Practices
+    - Use Atomic Operations for simple counters
+    - Avoid complex operations
+    - Ensure Memory visibility
+    - Monitor performance
+
+- Common Pitfalls
+    - Incorrect Use of Atomic Operations
+    - Overuse of Atomic Counters
+    - Race conditions
 
 
 
