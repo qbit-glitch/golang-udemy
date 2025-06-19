@@ -807,16 +807,26 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
         Key property: It balances precision and memory usage.
 
 
-
-
-
-
-
 ## Rate Limiting - Token Bucket Algorithms
 
+- using empty struct in channel is a common patter in Go when you want to signal or count something without needing to store any actual data. So why chose struct ?
 
+    - The best answer and the most important aspect of using struct is zero memory overhead. Empty structs in Go take up zero bytes of memory. This is because they don't contain any data and when you use struct as the type for your tokens, you are effectively creating a token that has no associated data, which minimizes memory usage.
 
+    - Signaling without data: In cases where the presence of a token rather than the value of the token is what matters, an empty struct us a perfect fit. 
+    
+    - In context of a rate limiter, you only care whether there is a token available or not, not what the token contains. 
+    
+    - And using structs makes it clear that the values in the channel are only for signaling purposes and do not carry any data. This can improve the readability of your code by making it clear that the channel's purpose is simply to count or send signals or receive signals.
 
+    - Key Points:
+        - Memory Efficiency: using structs avoids unnecessary memory allocation since it occupies zero bytes.
+        - Signalling intent: it clearly signals the intent that the channel is used for signaling or counting.
+        - Makes our code simpler: simplifies the code by avoiding the need to create and manage more complex types when the simple signaling is sufficient.
+    
+    - Using empty structs in channels is a Go idiom that leverages the language's zero byte storage optimization for empty structs, providing a clear and efficient way to implement signaling and counting mechanism.
+
+- The token bucket algorithm is used in networking and rate limiting scenarios to control the rate of events and ensure fair usafe of resources.
 
 ## Rate Limiting - Fixed Window Counter
 
