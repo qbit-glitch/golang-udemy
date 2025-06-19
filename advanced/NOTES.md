@@ -642,14 +642,64 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 <br/>
 
 
-
-
-
 ## Mutexex
 
+- Why use Mutexes ?
+    - Data Integrity
+    - Synchronization
+    - Avoid Race Conditions
 
+- Basic Operations
+    - Lock()
+    - Unlock()
+    - TryLock()
 
+- Mutex and Performance
+    - Contention
+    - Granularity
 
+- A mutex which is short for mutual exclusion, is a synchronization primitive used to prevent multiple goroutines from simultaneously accessing shared resources or executing critical sections of code. It ensures that only one goroutine can hold the mutex at a time, thus avoiding race conditions and data corruption.
+
+- Mutual exclusion is a principle used in concurrent programming to prevent multiple threads or processes from accessing a shared resource, simultaneously, ensuring data integrity and avoiding race conditions.
+
+- Why Mutual Exclusion is important ?
+    - Data Integrity
+    - Consistency
+    - Safety
+
+- How Mutual Exclusion is Achieved ?
+    - Locks (Mutexes)
+    - Semaphores
+    - Monitors
+    - Critical Sections
+
+- Why they are often used in structs ?
+    - Encapsulation
+    - Convenience
+    - Readability
+
+- How do mutexes work ?
+    - Mutexes are basically locking and unlocking mechanism. Mutexes have a marking mechanism. They mark the begining and ending of a critical section. `mu.Lock()` marks the begining of a critical section. `mu.Unlock()` marks the end of the critical section. And anything in between lock and unlock will be marked as the critical section, the section that the mutexes will protect.
+
+    - Mutex itself doesn't know what code to lock. It merely prevents other goroutines from acquiring the lock until it's unlocked and it protects the critical section, which is defined by the code between mu.Lock and mu.Unlock. This code must be written carefully to ensure that the critical section only includes operations on shared resources that need protection.
+
+- Best Practices for using Mutexes
+    - Minimize Lock Duration: Keep the critical section as short as possible to reduce the time the mutex is held, thereby minimizing contention and improving performance.
+
+    - Avoid Nested Locks: Avoid acquiring multiple locks simultaneously to prevent deadlocks. And if nested locking is necessary, ensure a consistent lock order. 
+
+    - Prefer sync.RWMutex for Read-Heavy Workloads
+    - Check for Deadlocks: Regularly review you code to identify potential deadlock situations and always use defer for unlocking.
+
+    - Use `defer` for Unlocking: to ensure that the mutex is released, even if an error occurs or the function exits prematurely.
+
+- Common Pitfalls
+    - Deadlocks
+    - Performance: execessive locking or holding locks for too long can degrade your application performance. Optimize by using lock contention and minimize critical section length.
+
+    - Starvation: Concept where on or more goroutines are perpetually denied access to a resource due to frequent acquisition by others. Ensure fair access and consider using additional synchronization techniques if necessary.
+
+- Contention in computing refers to the situation where multiple processes or threads compete for the same resource such as a mutex, CPU, or memory at the same time. In terms of mutexes and concurrency, contention specifically describes the competition among goroutines or threads to access to a shared resource that is produced by a mutex.
 
 
 ## Atomic Counters
