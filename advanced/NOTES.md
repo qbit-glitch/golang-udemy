@@ -1083,9 +1083,59 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Signals
 
+- Signals are a form of inter-process communication used to notify processes of certain events or states. They are commonly used to handle asynchronous events such as interruptions or terminations.
+
+- Why use signals ?
+    - Graceful shutdown: to allow programs to handle interruptions and shutdown gracefully.
+
+    - Resource Cleanup: ensure proper release of resources before exiting.
+
+    - Interprocess Communication: we need to notify or communicate between different processes.
+
+- Go provides a way to handle signals using the `os/signal` package which allows programs to listen to and respond to signals.
+
+- Signals in Unix like OS:
+    - SIGINT (Interrupt Signal)
+    - SIGTERM (Terminate Signal)
+    - SIGHUP (Hang Up Signal)
+    - SIGKILL (kill)
+
+- Using the `kill` command:
+    - Find the Process ID (PID)
+    - Send the signal
+    - Some examples: 
+        ```bash
+        kill -s SIGINT 8078
+        kill -s SIGTERM 8992
+        kill -s SIGHUP 10537
+        ```
+
+- Signal Types and Usage:
+    - Interrupts: SIGINT
+    - Terminations: SIGTERM
+    - Stop/Continue: SIGCONT, SIGSTOP
 
 
+- Debugging and Troubleshooting
+    - Debugging Signal Handling
+    - Common issues
+        - Signal lost
+        - Deadlocks
 
+- As we use signal, if that signal has a specific functionality associated with it, we actually override that functionality as soon as we use that signal in our program.
+
+- Best Practices :
+    - Graceful shutdowns: handle termination signals to allow your applications to clean up resources and exit gracefully.
+    
+    - Use signals to Handle Resource Cleanups: ensure that files, network connections or other resources are properly released before exiting.
+
+    - When using signals, ensure that you use non-blocking methods to ensure that signal handling does not delay or block other operations.
+
+- Using signals for graceful shutdowns and cleaning up resources is a common practice but aprat from that we can also use signals for inter-process communication. We can communicate state changes or events between processes using signals.
+
+- Keep in mind some performance considerations like ensuring that signal handling is efficient and does not introduce performance bottlenecks.
+
+- For security considerations: validate and handle signals securely to avoid potential security risks.
 
 ## Reflect
 
