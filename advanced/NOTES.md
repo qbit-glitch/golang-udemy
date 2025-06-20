@@ -1139,9 +1139,54 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Reflect
 
+- Reflection is a mechanism that allows a program to inspect and manipulate its own structure and behavior at runtime. 
 
+- In Go, reflection is provided by the `reflect` package. We use reflection for dynamic type inspections. Inspecting types and values dynamically.
 
+- Reflection is also used for generic programming, where we implement functions and data structures that operate on any type.
 
+- Apart from that we use reflection for serialization and deserialization as well. Using reflect package we can convert between data representations like JSON, XML and go types.
+
+- The reflect package provides types and functions to inspect and manipulate objects at runtime. Key types include: Type, Value and struct fields.
+
+- Why use Reflection ? 
+    - Dynamic Type Inspection
+    - Generic Programming
+    - Serialization/Deserialization
+
+- Few Methods
+    - `reflect.TypeOf()`: represents the type of a value.
+    - `reflect.Value()`: represents the value of a variable.
+    - `reflect.ValueOf()`
+    - `reflect.ValueOf().Elem()`
+
+- In Go, whether a field can be accessed and modified via reflection depends on its visibility. 
+
+    - The lowercase naming of variable / struct members, constricts the visibility of a struct and the fields of the struct to the package only.
+
+    - If we are using Uppercase alphabet as the first alphabet of a struct field, then that field or that struct or that type, it can be any type, or anything, then it can be exported. 
+    
+    - And if it is a lowercase alphabet in the begining of the name, then it is a private type. It is only visible to the other types which are in the same package, but it is not exported.
+
+    - Exported fields are fields with names starting with an uppercase letter and these fields are accessible outside of the package they are declared in and can be accessed and modified using reflection.
+
+    - However fields with names starting with a lowercase letter are unexported. These fields are only accessible within the same package and are not accessible via reflection from outside the package.
+
+    - Because of this, when using reflection, only exported fields can be accessed and modified and this is because the reflection API respects Go's visibility rules. During the runtime, relfect is accessing and modifying these values from outside. 
+
+- `TypeOf()`: only contains the type and the number of methods but not an executable method. So for getting the tangible asset of any type and using those tangible assets of that type, we need to use the `ValueOf()` method.
+
+- Reflect also helps us in dynamic function invocation, means we can implement frameworks or libraries that need to call functions dynamically.
+
+- We can use Reflect to map database records to Go structs dynamically which is quite helpful when it comes to ORM libraries.
+
+- Limitations and Considerations for `reflect`:
+    
+    - reflection can be slower compared to direct code access due to its dynamic nature.
+
+    - Using reflection can make code harder to understand and maintain, so use it judiciously.
+    
+    - Reflection bypasses static type checks which may lead to runtime errors. So ensure type safety when using reflect package.
 
 
 ## Advanced: Quiz-6
