@@ -1050,8 +1050,33 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 
 
-## Executing Processes / OS Processes / Other Processes
+## Executing Processes / OS Processes / Other Processes | SPAWNING PROCESSES
 
+- Process Spawning refers to creating and managing separate operating system processes from within a Go program. This involves starting new processes to run tasks concurrently or in isolation from the main program. We use process spawning for concurrency, isolation and resource management.
+
+- Why use Process Spawning ?
+    - Concurrency: runs tasks in pararllel to utilize multiple CPU cores for isolation.
+    - Isolation: executes tasks in separate environments to avoid interference and improve stability.
+    - Resource Management: Process Spawning offloads resource intensive tasks to separate proceses to manage system resources more effectively.
+
+- `os/exec` package:
+    - `exec.Command`
+    - `cmd.Stdin` / `cmd.Stdout`
+    - `cmd.Start` / `cmd.Wait`
+    - `cmd.Output`
+
+- `grep` is a linux terminal command. It searches for a line that contains the word, the argument that is passed to it.
+
+- Use Cases and Considerations
+    - When to use Process Spawning
+        - Resource-Intensive Tasks
+        - Isolation
+        - Concurrency
+    - Performance and Resource Management
+        - Overhead
+        - System Limits
+
+- Spawning processes in Go is a powerful technique for executing external commands and integrating them into your Go applications. The `os/exec` package provides robust and flexible ways to start and manage external processes, handle their input and output and capture their results.
 
 
 
