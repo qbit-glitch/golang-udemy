@@ -865,7 +865,16 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Rate Limiting - Leaky Bucket Algorithm
 
+- Token Bucket vs Fixed Window vs Leaky Bucket Algorithms for Rate Limiting
 
+    <img src="./assets/rate_limiting_difference_table.png" width="650" alt="Comparison between different rate limiting algorithms"/>
+    <br/>
+
+- How Leaky Bucket Algorithm Works:
+    - Requests arrive and are added to the bucket (queue).
+    - The bucket processes (leaks) requests at a fixed rate.
+    - If the bucket is full (the queue is at capacity), incoming requests are discarded.
+    - Ensures that requests are handled at a steady, controlled rate.
 
 
 
