@@ -924,7 +924,42 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Sorting
 
+- Sorting is a fundamental operation on computer science used to organize data, making it easier to search, analyze and manipulate.
 
+- the `sort` package in Go provides builtin functions for sorting slices and user defined collections.   
+
+- Why is Sorting important?
+    - Efficiency
+    - Readability
+    - Algorithms
+
+- Built-in Functions
+    - sort.Ints([]int)
+    - sort.Sort(sort.Interface)
+    - sort.Strings
+
+- `sort.Interface` consist of three methods:
+    - `Len() int`: returns the number of elements in the collection.
+    - `Less(i,j int) bool`: it compares the elements at indices i and j and returns `true` if the element at i should be sorted before the element at j.
+    - `Swap(i, j int)`: swaps the elements at indices i and j.
+
+- the `sort` package in Go requires us to implement sort.Interface to sort custom data types.
+    
+
+- A `type` can have it's own method. structs do not have methods, `type` have methods.
+    ```go
+    type By func(p1, p2 *Person) bool
+    ```
+
+- Best Practices:
+    - Reuse Sorting Functions
+    - Optimize Comparison Logic
+    - Test for Edge Cases
+
+- Performance Considerations:   
+    - Complexity
+    - Stability
+    - Memory Usage
 
 
 
