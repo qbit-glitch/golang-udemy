@@ -965,6 +965,22 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 
 ## Advanced: Quiz-4
 
+<img src="./assets/quiz4/q1.png" width="650" alt="Quiz-4"/>
+<br/>
+
+
+<img src="./assets/quiz4/q2.png" width="650" alt="Quiz-4"/>
+<br/>
+
+<img src="./assets/quiz4/q3.png" width="650" alt="Quiz-4"/>
+<br/>
+
+<img src="./assets/quiz4/q4.png" width="650" alt="Quiz-4"/>
+<br/>
+
+<img src="./assets/quiz4/q5.png" width="650" alt="Quiz-4"/>
+<br/>
+
 
 
 
