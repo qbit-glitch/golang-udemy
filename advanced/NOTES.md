@@ -982,13 +982,71 @@ NOTE: Channel directions are intended for use in functions and goroutines, not a
 <br/>
 
 
-
-
-
 ## Testing / Benchmarking
 
+- Testing is the process of verifying that a program behanves as expected and meets the requirements set for it. It involves writing and executing test cases to identify and fix bugs, ensure code correctness and improve software quality.
+
+- Why is Testing important ?
+
+    - Reliability: It ensures that the code functions correctly and as intended.
+
+    - Maintainability: Testing makes it easier to refactor and update code without introducing new bugs.
+    
+    - Documentation: testing provides a kind of documentation that demonstrates how code is expected to behave.
+
+- Go provides a builtin testing package that simplifies writing and running tests.
 
 
+
+- test files have a suffix: `_test.go`. eg: `FILENAME_test.go`. The file name should have this suffix so that the go compiler knows that it is a test file otherwise it may give an error.
+
+- no main function needed inside the test file.
+- to run the test files type : 
+    ```go
+    go test FILENAME_test.go
+    ```
+
+- Subtests allow grouping related tests and provides better test organization and reporting.
+
+- Benchmarking measures the performance of code. Specifically, how long it takes to execute a function or operation. This helps identify performance bottlenecks and evaluate the impact of code changes on performance.
+
+- For benchmarking, Go provides us a `benchmarking` package which is in the testing package. The testing package also supports benchmarking with functions that start with benchmark.      
+
+
+- Start the benchmark functions with names staring with the keyword `Benchmark` eg: `BenchmarkAdd(b *testing.B)`
+    - We should loop over `b.N` to perform the benchmarking.
+
+- By resetting the timer, we ensure that the setup time is not included in the benchmark timing and this allows us to measure only the time taken by the operation we are interested in benchmarking and providing a more accurate performance measurement.
+
+- Commands used:
+    ```bash
+    > go test testing_benchmarking_test.go
+    > go test -bench=. testing_benchmark_test.go | grep -v 'cpu'
+    > go test -bench=. -benchmem testing_benchmark_test.go | grep -v 'cpu'
+
+    > go test -bench=. -memprofile mem.pprof testing_benchmarking_test.go | grep -v 'cpu'
+
+    > go tool pprof mem.pprof
+    ```
+
+    - We use the pipe with `grep -v 'cpu'` to hide the details about the CPU.
+
+    - `benchmem` flag tells Go to include memory allocation statistics along with the benchmarking results.
+
+- Profiling:
+    - Profiling provides detailed insights into the performance of your application, including CPU usage, memory allocation and goroutine activity.
+    - Use `pprof` to collect and analyze CPU profile data.
+
+
+- Best Practices
+    - Write Comprehensive Tests
+    - Maintain Test Coverage
+    - Use Benchmarks Effectively
+    - Profile Regularly
+
+- Testing for quality assurance
+- Benchmarking for performance optimization
+- Profiling for Performance Analysis
 
 
 
