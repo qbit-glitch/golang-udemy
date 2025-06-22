@@ -163,8 +163,9 @@ So RWMutex helps to improve performance by reducing contention during read opera
     - Caching with RWMutex
     - Concurrent Data Structures
 
-## `sync.Once`
+## `sync.NewCond`
 
+- The `Cond()` object is always associated with a mutex. The mutex is used to protect data that the condition variable depends on. GoRoutines must acquire the mutex before waiting on or signaling the condition variable.
 
 
 
